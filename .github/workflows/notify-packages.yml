@@ -24,6 +24,6 @@ jobs:
             -d "$(jq -n \
                 --arg type "themes" \
                 --arg name "csk-theme-default" \
+                --arg strip "csk-theme-" \
                 --arg repo "${{ github.repository }}" \
-                --arg path "themes/default" \
-                '{event_type:"update-submodules", client_payload: {type:$type, name:$name, repository:$repo, path:$path}}')"
+                '{"event_type":"update-submodules","client_payload":{"type":$type,"name":$name,"strip":$strip,"repo":$repo}}')"
