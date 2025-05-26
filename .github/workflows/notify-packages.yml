@@ -17,13 +17,14 @@ jobs:
     steps:
       - name: Trigger update on csk-packages
         run: |
+          NAME="${GITHUB_REPOSITORY##*/}"
           curl -X POST \
             -H "Authorization: Bearer ${{ secrets.CSK_PAT }}" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/ianhubnet/csk-packages/dispatches \
             -d "$(jq -n \
-                --arg type "themes" \
-                --arg name "csk-theme-default" \
-                --arg strip "csk-theme-" \
+                --arg type "${{ vars.CSK_TYPE }}" \
+                --arg name "$NAME" \
+                --arg strip "${{ vars.CSK_STRIP }}" \
                 --arg repo "${{ github.repository }}" \
                 '{"event_type":"update-submodules","client_payload":{"type":$type,"name":$name,"strip":$strip,"repo":$repo}}')"
