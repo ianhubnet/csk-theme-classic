@@ -27,15 +27,18 @@ jobs:
           echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
           echo "folder=$MAIN_FOLDER" >> $GITHUB_OUTPUT
 
-      - name: Create full ZIP (exclude dotfiles)
+      - name: Create full ZIP (exclude unwanted files)
         run: |
           zip -r "${{ steps.vars.outputs.folder }}-${{ steps.vars.outputs.tag }}.zip" "${{ steps.vars.outputs.folder }}" \
             -x "${{ steps.vars.outputs.folder }}/.git/*" \
                "${{ steps.vars.outputs.folder }}/.github/*" \
-               "${{ steps.vars.outputs.folder }}/.gitignore" \
-               "${{ steps.vars.outputs.folder }}/.gitattributes" \
                "${{ steps.vars.outputs.folder }}/.editorconfig" \
-               "${{ steps.vars.outputs.folder }}/.vscode/*"
+               "${{ steps.vars.outputs.folder }}/.gitattributes" \
+               "${{ steps.vars.outputs.folder }}/.gitignore" \
+               "${{ steps.vars.outputs.folder }}/.vscode/*" \
+               "${{ steps.vars.outputs.folder }}/.dev/*" \
+               "${{ steps.vars.outputs.folder }}/CITATION.cff" \
+               "${{ steps.vars.outputs.folder }}/README.md"
 
       - name: Get previous tag
         id: previous
