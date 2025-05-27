@@ -24,13 +24,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Compute values
+      - name: Compute metadata
         id: meta
         run: |
           echo "name=${GITHUB_REPOSITORY##*/}" >> $GITHUB_OUTPUT
 
       - name: Trigger update on csk-packages
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.CSK_PAT }}
           repository: ianhubnet/csk-packages
