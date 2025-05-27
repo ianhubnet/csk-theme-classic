@@ -5,7 +5,7 @@ return array(
 	'name'         => 'Default',
 	'theme_uri'    => 'https://github.com/bkader/skeleton/tree/develop/public/content/themes',
 	'description'  => 'Default theme that comes with the CodeIgniter Skeleton.',
-	'version'      => '1.1',
+	'version'      => '1.0',
 	'license'      => 'MIT',
 	'license_uri'  => 'https://opensource.org/licenses/MIT',
 	'author'       => 'Kader Bouyakoub',
