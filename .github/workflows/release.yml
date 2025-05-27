@@ -1,4 +1,4 @@
-name: Release Module/Theme
+name: Release Package
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - '*'
 
 permissions:
-  contents: write  # Needed for creating releases
+  contents: write # Needed for creating releases
 
 jobs:
   build:
@@ -23,45 +23,33 @@ jobs:
         id: vars
         run: |
           TAG_NAME=${GITHUB_REF#refs/tags/}
-          MAIN_FOLDER=$(ls -d */ | head -n1 | sed 's#/##')
+          REPO_NAME=$(basename "${GITHUB_REPOSITORY}")
+          STRIP="${{ vars.CSK_STRIP }}"
+          NAME=${REPO_NAME#"$STRIP"}
+          ZIP_NAME="${REPO_NAME}-${TAG_NAME}.zip"
           echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
-          echo "folder=$MAIN_FOLDER" >> $GITHUB_OUTPUT
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "zip=$ZIP_NAME" >> $GITHUB_OUTPUT
 
-      - name: Create full ZIP (exclude unwanted files)
+      - name: Prepare ZIP contents
         run: |
-          zip -r "${{ steps.vars.outputs.folder }}-${{ steps.vars.outputs.tag }}.zip" "${{ steps.vars.outputs.folder }}" \
-            -x "${{ steps.vars.outputs.folder }}/.git/*" \
-               "${{ steps.vars.outputs.folder }}/.github/*" \
-               "${{ steps.vars.outputs.folder }}/.editorconfig" \
-               "${{ steps.vars.outputs.folder }}/.gitattributes" \
-               "${{ steps.vars.outputs.folder }}/.gitignore" \
-               "${{ steps.vars.outputs.folder }}/.vscode/*" \
-               "${{ steps.vars.outputs.folder }}/.dev/*" \
-               "${{ steps.vars.outputs.folder }}/CITATION.cff" \
-               "${{ steps.vars.outputs.folder }}/README.md"
+          mkdir "${{ steps.vars.outputs.name }}"
+          rsync -av --exclude='.git' \
+                    --exclude='.github' \
+                    --exclude='.gitignore' \
+                    --exclude='.gitattributes' \
+                    --exclude='.editorconfig' \
+                    --exclude='.dev' \
+                    --exclude='CITATION.cff' \
+                    --exclude="${{ steps.vars.outputs.name }}" \
+                    ./ "${{ steps.vars.outputs.name }}"
 
-      - name: Get previous tag
-        id: previous
+      - name: Create ZIP archive
         run: |
-          PREV_TAG=$(git tag --sort=-creatordate | grep -v "${{ steps.vars.outputs.tag }}" | head -n1 || echo "")
-          echo "prev_tag=$PREV_TAG" >> $GITHUB_OUTPUT
+          zip -r "${{ steps.vars.outputs.zip }}" "${{ steps.vars.outputs.name }}"
 
-      - name: Create update ZIP (only changed files)
-        if: steps.previous.outputs.prev_tag != ''
-        run: |
-          mkdir changed
-          git diff --name-only ${{ steps.previous.outputs.prev_tag }} ${{ steps.vars.outputs.tag }} | grep "^${{ steps.vars.outputs.folder }}/" | while read file; do
-            mkdir -p "changed/$(dirname "$file")"
-            cp "$file" "changed/$file"
-          done
-          cd changed
-          zip -r "../${{ steps.vars.outputs.folder }}-update-${{ steps.vars.outputs.tag }}.zip" .
-          cd ..
-
-      - name: Create GitHub Release and Upload ZIPs
+      - name: Create GitHub Release and Upload ZIP
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.vars.outputs.tag }}
-          files: |
-            ${{ steps.vars.outputs.folder }}-${{ steps.vars.outputs.tag }}.zip
-            ${{ steps.vars.outputs.folder }}-update-${{ steps.vars.outputs.tag }}.zip
+          files: ${{ steps.vars.outputs.zip }}
