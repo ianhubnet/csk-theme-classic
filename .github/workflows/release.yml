@@ -36,11 +36,13 @@ jobs:
           mkdir "${{ steps.vars.outputs.name }}"
           rsync -av --exclude='.git' \
                     --exclude='.github' \
+                    --exclude='.dev' \
                     --exclude='.gitignore' \
                     --exclude='.gitattributes' \
                     --exclude='.editorconfig' \
-                    --exclude='.dev' \
+                    --exclude='.gitmodules' \
                     --exclude='CITATION.cff' \
+                    --exclude='*.todolist' \
                     --exclude="${{ steps.vars.outputs.name }}" \
                     ./ "${{ steps.vars.outputs.name }}"
 
