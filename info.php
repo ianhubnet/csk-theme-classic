@@ -5,7 +5,7 @@ return array(
 	'name'         => 'Default',
 	'theme_uri'    => 'https://github.com/ianhubnet/csk-theme-default/',
 	'description'  => 'Default theme that comes with the CodeIgniter Skeleton.',
-	'version'      => '1.0',
+	'version'      => '1.1',
 	'author'       => 'Kader Bouyakoub',
 	'author_uri'   => 'http://bit.ly/KaderGhb/',
 	'author_email' => 'bkader@mail.com',

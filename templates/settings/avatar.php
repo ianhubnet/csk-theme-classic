@@ -13,7 +13,7 @@
 						<div class="col-sm-9">
 							<div class="d-flex">
 								<div class="flex-shrink-0">
-									<?php echo $this->user->avatar(50, 'class="rounded-circle"'); ?>
+									<?php echo $this->user->avatar(50, 'class="rounded"'); ?>
 								</div>
 								<div class="flex-grow-1 ms-3">
 									<label for="avatar" class="btn btn-outline-secondary btn-sm"><?php _e('upload') ?></label>
@@ -31,13 +31,12 @@
 					</div>
 
 					<!-- Use Gravatar checkbox -->
-				<?php if (empty($this->user->gravatar)): ?>
+				<?php if ( ! empty($this->user->raw_avatar)): ?>
 					<div class="row justify-content-end mb-3">
 						<div class="col-sm-9">
 							<div class="form-check mb-0">
-								<input type="checkbox"name="gravatar" id="gravatar" class="form-check-input" value="1">
-								<label for="gravatar" class="form-check-label ms-1"><?php _e('use_gravatar') ?></label>
-								<p class="form-text mb-0"><?php _e('use_gravatar_help'); ?></p>
+								<input type="checkbox"name="delete" id="delete" class="form-check-input border-danger" value="1">
+								<label for="delete" class="form-check-label ms-1 text-danger"><?php _e('delete') ?></label>
 							</div>
 						</div>
 					</div>
