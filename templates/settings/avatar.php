@@ -31,7 +31,7 @@
 					</div>
 
 					<!-- Use Gravatar checkbox -->
-				<?php if ( ! empty($this->user->raw_avatar)): ?>
+				<?php if ( ! empty($this->user->icon_hash)): ?>
 					<div class="row justify-content-end mb-3">
 						<div class="col-sm-9">
 							<div class="form-check mb-0">
