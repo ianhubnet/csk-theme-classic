@@ -19,9 +19,9 @@ if ($this->core->has_menu('header-menu')) {
 }
 ?>
 			<ul class="navbar-nav ms-auto">
-			<?php if ( ! empty($this->prev_user_id)): ?>
+			<?php if ($this->auth->previous_id > 0): ?>
 				<form class="navbar-form navbar-start pl-0 pr-0" action="<?php echo site_url('switch') ?>" method="POST">
-					<input type="hidden" name="id" value="<?php echo $this->prev_user_id ?>" hidden="hidden" style="display:none">
+					<input type="hidden" name="id" value="<?php echo $this->auth->previous_id ?>" hidden="hidden" style="display:none">
 					<button type="submit" class="btn btn-link"><span class="fa fa-sign-in"></span></button>
 				</form>
 			<?php endif; ?>
