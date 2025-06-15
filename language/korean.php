@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR die;
+defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
 $lang['main_menu']    = '메인 메뉴';
 $lang['footer_menu']  = '푸터 메뉴';

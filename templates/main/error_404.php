@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR die; ?><div class="row">
+<?php defined('BASEPATH') || exit('A moment of silence for your attempt.'); ?><div class="row">
 	<div class="col mt-4">
 		<div class="page-404">
 			<div class="outer">

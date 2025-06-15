@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR die; ?><div class="row justify-content-center">
+<?php defined('BASEPATH') || exit('A moment of silence for your attempt.'); ?><div class="row justify-content-center">
 	<div class="col-12 col-md-8 col-lg-6 col-xl-4">
 		<h1 class="text-center h4 mb-2"><?php _e('resend_activation_link') ?></h1>
 
