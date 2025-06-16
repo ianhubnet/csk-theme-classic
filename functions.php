@@ -468,15 +468,13 @@ if ( ! function_exists('fa_icon')) {
 	 * @return  string
 	 */
 	function fa_icon($class = '', string $after = '', string $before = '') {
-		static $template; // remember it.
-
-		(empty($template)) && $template = '<i class="fa fa-fw fa-%s"></i>';
+		static $template = '<i class="fa fa-fw fa-%s"></i>'; // remember it.
 
 		$icon = sprintf($template, $class);
 
-		(empty($after)) OR $icon .= $after;
+		empty($after) || $icon .= $after;
 
-		(empty($before)) OR $icon = $before.$icon;
+		empty($before) || $icon = $before.$icon;
 
 		return $icon;
 	}
@@ -540,7 +538,7 @@ if ( ! class_exists('Csk200_captcha_class', false))
 
 		// Word length.
 		public function word_length($length) {
-			$length = 7;
+			return 5;
 			return $length;
 		}
 
@@ -552,7 +550,7 @@ if ( ! class_exists('Csk200_captcha_class', false))
 
 		// Image height.
 		public function img_height($h) {
-			$h = 34;
+			$h = 40;
 			return $h;
 		}
 
