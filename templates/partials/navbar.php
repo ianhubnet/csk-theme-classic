@@ -27,10 +27,10 @@ if ($this->core->has_menu('header-menu')) {
 			<?php endif; ?>
 			<?php if ($this->i18n->polylang): ?>
 				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?php echo line($this->i18n->current('id')); ?> <span class="caret"></span></a>
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?php echo $this->i18n->current('name_current'); ?> <span class="caret"></span></a>
 					<div class="dropdown-menu dropdown-menu-end">
 					<?php foreach($this->i18n->others('current') as $folder => $lang): ?>
-						<a href="<?php echo lang_url($folder); ?>" class="dropdown-item"><?php echo line($lang['id']); ?><span class="text-muted float-end ms-2"><?php echo $lang['name']; ?></span></a>
+						<a href="<?php echo lang_url($folder); ?>" class="dropdown-item"><?php echo $lang['name_current']; ?><span class="text-muted float-end ms-2"><?php echo $lang['name']; ?></span></a>
 					<?php endforeach; unset($folder, $lang); ?>
 					</div>
 				</li>
