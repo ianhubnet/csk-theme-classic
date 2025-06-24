@@ -35,8 +35,8 @@ if ($this->core->has_menu('header-menu')) {
 					</div>
 				</li>
 			<?php endif; ?>
-<?php if ($this->auth->online()): ?>
-			<?php if ($this->auth->has_dashboard()): ?>
+<?php if ($this->user): ?>
+			<?php if ($this->user->dashboard): ?>
 				<li class="nav-item"><?php echo anchor('admin', line('admin_panel'), 'class="nav-link"') ?></li>
 			<?php endif; ?>
 				<li class="nav-item dropdown user-menu">
