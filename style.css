@@ -1,7 +1,7 @@
+@charset "UTF-8";
 /*!
  * CodeIgniter Skeleton - Default Theme
- * https://github.com/bkader/skeleton/tree/develop/public/content/themes
- * Made by Kader Bouyakoub (http://bit.ly/KaderGhb/)
+ * Copyright 2025 Kader Bouyakoub (https://github.com/bkader)
  */
 
 html, body {
@@ -216,11 +216,18 @@ footer.navbar .menu-item {
 	width: max-content;
 }
 
+.dropdown-menu-scroll {
+	min-height: 12rem;
+	max-height: calc(100vh - 13rem);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
 .no-resize {
 	resize: none !important;
 }
 
-@media screen and (min-width: 48rem) {
+@media (min-width: 48rem) {
 	.cookie-consent {
 		max-width: 25rem;
 		left: auto;
@@ -246,4 +253,22 @@ footer.navbar .menu-item {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+}
+
+@media (max-width: 36rem) {
+	.dropdown-menu-scroll {
+		max-height: calc(100vh - 8rem);
+	}
+}
+
+@media (max-width: 48rem) {
+	.dropdown-menu-scroll {
+		max-height: calc(100vh - 48rem);
+	}
+}
+
+@media (max-width: 62rem) {
+	.dropdown-menu-scroll {
+		max-height: calc(100vh - 48rem);
+	}
 }
