@@ -23,7 +23,8 @@
 										'class' => error_class('avatar', 'hidden'),
 										'hidden' => 'hidden',
 										'style' => 'display:none'
-									));
+									)),
+									form_error('avatar');
 									?>
 								</div>
 							</div>

@@ -32,8 +32,8 @@
 					</div>
 					<div class="col">
 						<?php
-						echo print_input($captcha, array('class' => error_class('captcha', 'form-control')));
-						echo form_error('captcha');
+						echo print_input($captcha, array('class' => error_class('captcha', 'form-control'))),
+						form_error('captcha');
 						?>
 					</div>
 				</div>

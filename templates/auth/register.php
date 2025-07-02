@@ -27,7 +27,7 @@
 				<div class="mb-2">
 					<?php
 					// Email address.
-					echo print_input($email, array('class' => error_class('email', 'form-control form-control-sm')));
+					echo print_input($email, array('class' => error_class('email', 'form-control form-control-sm'))),
 					form_error('email');
 					?>
 				</div>
@@ -73,8 +73,8 @@
 					</div>
 					<div class="col">
 						<?php
-						echo print_input($captcha, array('class' => error_class('captcha', 'form-control form-control-sm')));
-						echo form_error('captcha');
+						echo print_input($captcha, array('class' => error_class('captcha', 'form-control form-control-sm'))),
+						form_error('captcha');
 						?>
 					</div>
 				</div>

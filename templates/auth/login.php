@@ -42,8 +42,8 @@
 					</div>
 					<div class="col">
 						<?php
-						echo print_input($captcha, array('class' => error_class('captcha', 'form-control')));
-						echo form_error('captcha');
+						echo print_input($captcha, array('class' => error_class('captcha', 'form-control'))),
+						form_error('captcha');
 						?>
 					</div>
 				</div>
@@ -53,8 +53,8 @@
 				<!-- remember me -->
 				<div class="form-check form-switch mb-2">
 					<?php
-					echo print_input($remember, array('class' => 'form-check-input', 'role' => 'switch'));
-					echo form_label(line('remember_me'), 'remember', 'class="form-check-label"');
+					echo print_input($remember, array('class' => 'form-check-input', 'role' => 'switch')),
+					form_label(line('remember_me'), 'remember', 'class="form-check-label"');
 					?>
 				</div>
 			<?php endif; ?>
