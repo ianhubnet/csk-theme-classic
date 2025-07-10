@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'Menu Utama';
-$lang['footer_menu']  = 'Menu Footer';
+$lang['main_menu'] = 'Menu Utama';
+$lang['footer_menu'] = 'Menu Footer';
 $lang['sidebar_menu'] = 'Menu Sidebar';
 
 $lang['theme_sidebar_heading'] = 'Judul Terjemahan';

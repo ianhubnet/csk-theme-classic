@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'Menu Chính';
-$lang['footer_menu']  = 'Menu Chân Trang';
+$lang['main_menu'] = 'Menu Chính';
+$lang['footer_menu'] = 'Menu Chân Trang';
 $lang['sidebar_menu'] = 'Menu Thanh Bên';
 
 $lang['theme_sidebar_heading'] = 'Tiêu Đề Đã Dịch';

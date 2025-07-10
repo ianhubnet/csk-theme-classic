@@ -1,53 +1,48 @@
-<?php defined('BASEPATH') || exit('A moment of silence for your attempt.'); ?><div class="row justify-content-center">
+<div class="row justify-content-center">
 	<div class="col-12 col-md-8 col-lg-6 col-xl-4">
-		<h1 class="text-center h4 mb-2"><?php _e('resend_activation_link') ?></h1>
+		<h1 class="text-center h4 mb-2"><?= line('resend_activation_link') ?></h1>
 
 		<div class="card">
-			<?php echo form_open('resend-link', 'role="form" id="resend-link" class="card-body"') ?>
+			<?= form_open('resend-link', 'role="form" id="resend-link" class="card-body"', $hidden) ?>
 
-				<p class="mb-3"><?php _e('resend_activation_link_tip') ?></p>
+				<p class="mb-3"><?= line('resend_activation_link_tip') ?></p>
 
 				<!-- username/email address -->
 				<div class="mb-3">
-					<?php
-					// Identity field.
-					echo print_input($identity, array('class' => error_class('identity', 'form-control form-control-sm'))),
-					form_error('identity');
-					?>
+					<label for="identity" class="form-label mb-1 visually-hidden"><?= line('username_or_email') ?></label>
+					<?= print_input($identity, ['class' => error_class('identity', 'form-control form-control-sm')]) ?>
+					<?= form_error('identity') ?>
 				</div>
 
 			<?php if (isset($captcha)): if ($this->config->item('use_recaptcha')): ?>
 				<!-- google recaptcha -->
 				<div class="mb-2 text-center">
-					<?php echo $captcha, form_error('g-recaptcha-response'); ?>
+					<?= $captcha ?>
+					<?= form_error('g-recaptcha-response') ?>
 				</div>
 
 			<?php else: ?>
 				<!-- captcha -->
 				<div class="row row-cols-1 row-cols-md-2 mb-2">
 					<div class="col" tabindex="-1">
-						<?php echo $captcha_image ?>
+						<?= $captcha_image ?>
 					</div>
 					<div class="col">
-						<?php
-						echo print_input($captcha, array('class' => error_class('captcha', 'form-control'))),
-						form_error('captcha');
-						?>
+						<?= print_input($captcha, ['class' => error_class('captcha', 'form-control')]) ?>
+						<?= form_error('captcha') ?>
 					</div>
 				</div>
 			<?php endif; endif; ?>
 
 				<div class="d-grid">
-					<button type="submit" class="btn btn-primary btn-sm">
-						<?php _e('resend_link') ?>
-					</button>
+					<button role="button" type="submit" class="btn btn-primary btn-sm"><?= line('resend_link') ?></button>
 				</div><!--/.d-grid-->
 
-			<?php echo form_close() ?><!--/.card-body-->
+			<?= form_close() ?><!--/.card-body-->
 
 			<div class="card-footer bg-body-secondary border-top-0">
 				<div class="d-grid">
-					<?php echo anchor('login', line('login'), 'class="btn btn-light btn-sm"') ?>
+					<?= anchor('login', line('login'), 'class="btn btn-light btn-sm"') ?>
 				</div><!--/.d-grid-->
 			</div><!--/.card-footer-->
 

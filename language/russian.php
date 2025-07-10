@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'Основное меню';
-$lang['footer_menu']  = 'Меню внизу страницы';
+$lang['main_menu'] = 'Основное меню';
+$lang['footer_menu'] = 'Меню внизу страницы';
 $lang['sidebar_menu'] = 'Боковое меню';
 
 $lang['theme_sidebar_heading'] = 'Переведенный Заголовок';

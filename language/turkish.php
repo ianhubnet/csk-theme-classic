@@ -1,5 +1,4 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
 $lang['main_menu'] = 'Ana Menü';
 $lang['footer_menu'] = 'Alt Menü';

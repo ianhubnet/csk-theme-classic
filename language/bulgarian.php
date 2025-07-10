@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'Главно меню';
-$lang['footer_menu']  = 'Долно меню';
+$lang['main_menu'] = 'Главно меню';
+$lang['footer_menu'] = 'Долно меню';
 $lang['sidebar_menu'] = 'Странична лента Меню';
 
 $lang['theme_sidebar_heading'] = 'Преведено заглавие';

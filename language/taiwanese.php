@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = '主菜單';
-$lang['footer_menu']  = '頁腳菜單';
+$lang['main_menu'] = '主菜單';
+$lang['footer_menu'] = '頁腳菜單';
 $lang['sidebar_menu'] = '側邊欄菜單';
 
 $lang['theme_sidebar_heading'] = '翻譯的標題';

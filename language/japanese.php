@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'メインメニュー';
-$lang['footer_menu']  = 'フッターメニュー';
+$lang['main_menu'] = 'メインメニュー';
+$lang['footer_menu'] = 'フッターメニュー';
 $lang['sidebar_menu'] = 'サイドバーメニュー';
 
 $lang['theme_sidebar_heading'] = '翻訳された見出し';

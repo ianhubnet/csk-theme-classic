@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'मुख्य मेनू';
-$lang['footer_menu']  = 'फ़ूटर मेनू';
+$lang['main_menu'] = 'मुख्य मेनू';
+$lang['footer_menu'] = 'फ़ूटर मेनू';
 $lang['sidebar_menu'] = 'साइडबार मेनू';
 
 $lang['theme_sidebar_heading'] = 'अनुवादित हेडिंग';

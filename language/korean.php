@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = '메인 메뉴';
-$lang['footer_menu']  = '푸터 메뉴';
+$lang['main_menu'] = '메인 메뉴';
+$lang['footer_menu'] = '푸터 메뉴';
 $lang['sidebar_menu'] = '사이드바 메뉴';
 
 $lang['theme_sidebar_heading'] = '번역된 제목';

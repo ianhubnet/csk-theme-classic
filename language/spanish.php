@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
 
-$lang['main_menu']    = 'Menú principal';
-$lang['footer_menu']  = 'Menú del Pie de Página';
+$lang['main_menu'] = 'Menú principal';
+$lang['footer_menu'] = 'Menú del Pie de Página';
 $lang['sidebar_menu'] = 'Encabezado traducido';
 
 $lang['theme_sidebar_heading'] = 'Encabezado Traducido';

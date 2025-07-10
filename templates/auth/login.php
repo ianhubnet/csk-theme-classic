@@ -1,50 +1,47 @@
-<?php defined('BASEPATH') || exit('A moment of silence for your attempt.'); ?><div class="row justify-content-center">
+<div class="row justify-content-center">
 	<div class="col-12 col-md-8 col-lg-6 col-xl-4">
-		<h1 class="text-center h4 mb-2"><?php _e('member_login') ?></h1>
+		<h1 class="text-center h4 mb-2"><?= line('member_login') ?></h1>
 
 		<?php if (isset($locked_message)): ?>
 		<div class="card">
 			<div class="card-body">
-				<p class="alert alert-danger mb-0"><?php echo $locked_message ?></p>
+				<p class="alert alert-danger mb-0"><?= $locked_message ?></p>
 			</div><!--/.card-body-->
 		</div><!--/.card-->
 		<?php else: ?>
 		<div class="card">
-			<?php echo form_open('login', 'role="form" id="login" class="card-body"', $hidden) ?>
+			<?= form_open('login', 'role="form" id="login" class="card-body"', $hidden) ?>
 
 				<!-- username/email address -->
 				<div class="mb-2">
-					<?php
-					echo print_input($login, array('class' => error_class($login_type, 'form-control form-control-sm'))),
-					form_error($login_type);
-					?>
+					<label for="<?= $login_type ?>" class="form-label mb-1 visually-hidden"><?= _translate($login['placeholder']) ?></label>
+					<?= print_input($login, ['class' => error_class($login_type, 'form-control form-control-sm')]) ?>
+					<?= form_error($login_type) ?>
 				</div>
 
 				<!-- password -->
 				<div class="mb-2">
-					<?php
-					echo print_input($password, array('class' => error_class('password', 'form-control form-control-sm'))),
-					form_error('password');
-					?>
+					<label for="password" class="form-label mb-1 visually-hidden"><?= line('password') ?></label>
+					<?= print_input($password, ['class' => error_class('password', 'form-control form-control-sm')]) ?>
+					<?= form_error('password') ?>
 				</div>
 
 			<?php if (isset($captcha)): if ($this->config->item('use_recaptcha')): ?>
 				<!-- google recaptcha -->
 				<div class="mb-2 text-center">
-					<?php echo $captcha, form_error('g-recaptcha-response'); ?>
+					<?= $captcha ?>
+					<?= form_error('g-recaptcha-response') ?>
 				</div>
 
 			<?php else: ?>
 				<!-- captcha -->
 				<div class="row row-cols-1 row-cols-md-2 mb-2">
 					<div class="col" tabindex="-1">
-						<?php echo $captcha_image ?>
+						<?= $captcha_image ?>
 					</div>
 					<div class="col">
-						<?php
-						echo print_input($captcha, array('class' => error_class('captcha', 'form-control'))),
-						form_error('captcha');
-						?>
+						<?= print_input($captcha, ['class' => error_class('captcha', 'form-control')]) ?>
+						<?= form_error('captcha') ?>
 					</div>
 				</div>
 			<?php endif; endif; ?>
@@ -52,54 +49,47 @@
 			<?php if (isset($remember)): ?>
 				<!-- remember me -->
 				<div class="form-check form-switch mb-2">
-					<?php
-					echo print_input($remember, array('class' => 'form-check-input', 'role' => 'switch')),
-					form_label(line('remember_me'), 'remember', 'class="form-check-label"');
-					?>
+					<?= print_input($remember, ['class' => 'form-check-input', 'role' => 'switch']) ?>
+					<label for="remember" class="form-check-label"><?= line('remember_me') ?></label>
 				</div>
 			<?php endif; ?>
 
 				<!-- login button -->
 				<div class="d-grid d-lg-flex gap-2">
-					<button type="submit" class="btn btn-primary btn-sm flex-fill">
-						<?php _e('login') ?>
-					</button>
+					<button role="button" type="submit" class="btn btn-primary btn-sm flex-fill"><?= line('login') ?></button>
 					<?php if ($this->config->item('allow_quick_login')): ?>
 					<!-- quick-login button -->
-						<?php echo anchor(
-							'quick-login',
-							line('quick_login'),
-							'class="btn btn-outline-primary btn-sm" tabindex="-1"') ?>
+						<?= anchor('quick-login', line('quick_login'), 'class="btn btn-outline-primary btn-sm" tabindex="-1"') ?>
 					<?php endif; ?>
 				</div>
 
-			<?php echo form_close() ?><!--/.card-body-->
+			<?= form_close() ?><!--/.card-body-->
 
-			<?php if ( ! $this->config->item('site_offline')): ?>
+			<?php if (! SITE_OFFLINE): ?>
 			<div class="card-footer bg-body-secondary border-top-0">
 				<div class="d-grid d-lg-flex gap-2">
 					<!-- lost password button -->
-					<?php echo anchor('lost-password', line('lost_password'), array(
+					<?= anchor('lost-password', line('lost_password'), [
 						'role' => 'button',
-						'class' => 'btn btn-light btn-sm flex-fill',
-						'tabindex' => '-1'
-					)) ?>
+						'tabindex' => '-1',
+						'class' => 'btn btn-light btn-sm flex-fill'
+					]) ?>
 				<?php if ($this->config->item('allow_registration')): ?>
 					<!-- create account button -->
-					<?php echo anchor('register', line('create_account'), 'class="btn btn-light btn-sm flex-fill"') ?>
+					<?= anchor('register', line('create_account'), 'class="btn btn-light btn-sm flex-fill"') ?>
 				<?php endif; ?>
 				</div>
 			</div><!--/.card-footer-->
 			<?php endif; ?>
 		</div><!--/.card-->
 
-		<?php if ( ! empty($this->oauth->providers)): ?>
+		<?php if (! empty($this->oauth->providers)): ?>
 		<!-- extra buttons -->
 		<div class="mt-2">
 			<div class="d-grid d-md-flex gap-2">
 			<?php foreach ($this->oauth->providers as $name => $url): ?>
-				<a href="<?php echo $url ?>" class="btn btn-light btn-sm flex-fill" tabindex="-1">
-					<i class="fab fa-fw fa-<?php echo $name ?>"></i>
+				<a href="<?= $url ?>" class="btn btn-light btn-sm flex-fill" tabindex="-1">
+					<i class="fab fa-fw fa-<?= $name ?>"></i>
 				</a>
 			<?php endforeach; ?>
 			</div>
