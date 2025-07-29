@@ -49,9 +49,6 @@ if (! class_exists('Default_theme', false)):
 			// Register theme menus.
 			add_action('theme_menus', array($this, 'theme_menus'));
 
-			// Register theme thumbnails sizes and names.
-			add_action('theme_images', array($this, 'theme_images'));
-
 			if (is_dashboard()) {
 				return;
 			}
@@ -184,22 +181,6 @@ if (! class_exists('Default_theme', false)):
 		}
 
 		// --------------------------------------------------------------------
-		// Theme images sizes.
-		// --------------------------------------------------------------------
-
-		/**
-		 * Register themes images sizes.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_images()
-		{
-			// These sizes are dummy ones. Use yours depending on your theme.
-			$this->ci->files->add_image_size('thumb', 260, 180, true);
-			$this->ci->files->add_image_size('avatar', 100, 100, true);
-		}
-
-		// --------------------------------------------------------------------
 		// Assets methods.
 		// --------------------------------------------------------------------
 
@@ -210,7 +191,7 @@ if (! class_exists('Default_theme', false)):
 		public function after_theme_setup()
 		{
 			// Load Google fonts.
-			$this->ci->assets->css(
+			$this->ci->hub->assets->css(
 				'//fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Noto+Kufi+Arabic:wght@300;400;500;700&display=swap',
 				'google-fonts',
 				null,
@@ -218,19 +199,19 @@ if (! class_exists('Default_theme', false)):
 			);
 
 			// Assets we need.
-			$this->ci->assets
+			$this->ci->hub->assets
 				->fontawesome()
 				->bootstrap();
 
 			// Live?
-			if ($this->ci->core->is_live) {
-				$this->ci->theme
+			if ($this->ci->hub->is_live) {
+				$this->ci->hub->theme
 					->add_meta('dns-prefetch', '//fonts.googleapis.com/', 'rel')
 					->add_meta('dns-prefetch', '//cdnjs.cloudflare.com/', 'rel');
 
-				$this->ci->assets->css($this->ci->config->theme_url('style.min.css'), 'style', null, true);
+				$this->ci->hub->assets->css($this->ci->url->theme('style.min.css'), 'style', null, true);
 			} else {
-				$this->ci->assets->css($this->ci->config->theme_url('style.css'), 'style', null, true);
+				$this->ci->hub->assets->css($this->ci->url->theme('style.css'), 'style', null, true);
 			}
 		}
 
@@ -251,9 +232,9 @@ if (! class_exists('Default_theme', false)):
 		 */
 		public function enqueue_partials()
 		{
-			$this->ci->theme->add_partial('navbar');
-			$this->ci->theme->add_partial('sidebar');
-			$this->ci->theme->add_partial('footer');
+			$this->ci->hub->theme->add_partial('navbar');
+			$this->ci->hub->theme->add_partial('sidebar');
+			$this->ci->hub->theme->add_partial('footer');
 		}
 
 		/**

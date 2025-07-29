@@ -1,6 +1,6 @@
 <?= $this->theme->partial('navbar') ?>
 <div class="container">
-	<?= $this->theme->alert() ?>
+	<?= $this->ui->alerts() ?>
 	<?= $this->theme->content() ?>
 </div>
 <?php

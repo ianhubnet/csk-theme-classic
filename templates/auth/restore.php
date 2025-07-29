@@ -5,7 +5,7 @@
 		<div class="card">
 			<?= form_open('restore-account', 'role="form" id="restore-account" class="card-body"', $hidden) ?>
 
-				<p class="mb-3"><?php _e('restore_account_tip') ?></p>
+				<p class="mb-3"><?= line('restore_account_tip') ?></p>
 
 				<!-- username/email address -->
 				<div class="mb-3">

@@ -8,7 +8,7 @@
 
 		<div class="navbar-collapse collapse" id="navbar-collapse">
 <?php
-if ($this->core->has_menu('header-menu')) {
+if ($this->hub->has_menu('header-menu')) {
 	echo $this->menus->build_menu(array(
 		'location'   => 'header-menu',
 		'menu_attr'  => array('class' => 'navbar-nav'),
@@ -19,17 +19,17 @@ if ($this->core->has_menu('header-menu')) {
 }
 		?>
 			<ul class="navbar-nav ms-auto">
-			<?php if ($this->auth->previous_id > 0): ?>
+			<?php if ($this->hub->auth->previous_id > 0): ?>
 				<form class="navbar-form navbar-start pl-0 pr-0" action="<?= site_url('switch') ?>" method="POST">
-					<input type="hidden" name="id" value="<?= $this->auth->previous_id ?>" hidden="hidden" style="display:none">
+					<input type="hidden" name="id" value="<?= $this->hub->auth->previous_id ?>" hidden="hidden" style="display:none">
 					<button type="submit" class="btn btn-link"><span class="fa fa-sign-in"></span></button>
 				</form>
 			<?php endif; ?>
 			<?php if (APP_I18N): ?>
 				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->i18n->current('name_current') ?> <span class="caret"></span></a>
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->hub->lang->current('name_current') ?> <span class="caret"></span></a>
 					<div class="dropdown-menu dropdown-menu-end dropdown-menu-scroll">
-					<?php foreach ($this->i18n->others('current') as $folder => $lang): ?>
+					<?php foreach ($this->hub->lang->others('current') as $folder => $lang): ?>
 						<a href="<?= lang_url($folder) ?>" class="dropdown-item"><?= $lang['name_current'] ?><span class="text-muted float-end ms-2"><?= $lang['name'] ?></span></a>
 					<?php endforeach; ?>
 					</div>
@@ -44,7 +44,7 @@ if ($this->core->has_menu('header-menu')) {
 					<div class="dropdown-menu dropdown-menu-end">
 						<?php
 						// The following is hidden is maintenance mode.
-						if (!SITE_OFFLINE) {
+						if ($this->user->has_offline()) {
 							echo anchor('user/'.$this->user->username, line('view_profile'), 'class="dropdown-item"'),
 							anchor('settings', line('settings'), 'class="dropdown-item"'),
 							'<hr class="dropdown-divider">';

@@ -1,5 +1,5 @@
 <?php
-if ($this->core->has_menu('sidebar-menu')) {
+if ($this->hub->has_menu('sidebar-menu')) {
 	echo $this->menus->build_menu(array(
 		'location' => 'sidebar-menu',
 		'menu_attr' => array(
