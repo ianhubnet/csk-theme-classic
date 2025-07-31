@@ -45,9 +45,11 @@ if ($this->hub->has_menu('header-menu')) {
 						<?php
 						// The following is hidden is maintenance mode.
 						if ($this->user->has_offline()) {
-							echo anchor('user/'.$this->user->username, line('view_profile'), 'class="dropdown-item"'),
-							anchor('settings', line('settings'), 'class="dropdown-item"'),
-							'<hr class="dropdown-divider">';
+							echo anchor('user/'.$this->user->username, line('view_profile'), 'class="dropdown-item"');
+							if ($this->module->enabled('settings')) {
+								echo anchor('settings', line('settings'), 'class="dropdown-item"');
+							}
+							echo '<hr class="dropdown-divider">';
 						}
 
 						// Logout button.
