@@ -12,6 +12,7 @@ html, body {
 body {
 	font-family: 'Fira Sans', 'Noto Kufi Arabic', Tahoma, Arial, sans-serif;
 	padding-top: 5rem;
+	padding-bottom: 6rem;
 	font-size: .875rem;
 	background-color: #d9d9d9;
 	color: #414141;

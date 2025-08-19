@@ -7,17 +7,11 @@
 		</button>
 
 		<div class="navbar-collapse collapse" id="navbar-collapse">
-<?php
-if ($this->hub->has_menu('header-menu')) {
-	echo $this->menus->build_menu(array(
-		'location'   => 'header-menu',
-		'menu_attr'  => array('class' => 'navbar-nav'),
-		'item_attr' => array('class' => 'nav-item'),
-		'link_attr' => array('class' => 'nav-link'),
-		'container'  => false,
-	));
-}
-		?>
+			<?= $this->menus->render('primary', [
+				'menu_attrs' => ['class' => 'navbar-nav me-auto'],
+				'item_attrs' => ['class' => 'nav-item'],
+				'link_attrs' => ['class' => 'nav-link']
+			]) ?>
 			<ul class="navbar-nav ms-auto">
 			<?php if ($this->hub->auth->previous_id > 0): ?>
 				<form class="navbar-form navbar-start pl-0 pr-0" action="<?= site_url('switch') ?>" method="POST">

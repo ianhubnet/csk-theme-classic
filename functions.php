@@ -8,583 +8,332 @@ defined('BASEPATH') || exit('A moment of silence for your attempt.');
  * This file is an example of how to use functions.php for your themes.
  * You can use a class or simply a list of functions to add your hooks.
  *
- * @package 	CodeIgniter
- * @subpackage 	Skeleton
- * @category 	Themes
- * @author 		Kader Bouyakoub <bkader[at]mail[dot]com>
- * @link 		http://bit.ly/KaderGhb
- * @copyright 	Copyright (c) 2024, Kader Bouyakoub (http://bit.ly/KaderGhb)
- * @since 		1.0
- * @version 	1.33
+ * @package     CiSkeleton\Themes
+ * @subpackage  Default\Functions
+ * @author      Kader Bouyakoub <bkader[at]mail[dot]com>
+ * @link        http://bit.ly/KaderGhb
+ * @copyright   Copyright (c) 2024, Kader Bouyakoub (http://bit.ly/KaderGhb)
  */
-// --------------------------------------------------------------------
-if (! class_exists('Default_theme', false)):
+
+final class CI_Theme_Default
+{
+	protected $ci;
+	protected $path;
+	public $active = false;
+
+	public function __construct()
+	{
+		$this->ci = app();
+		$this->path = $this->ci->config->theme_path();
+
+		// Bail early for dashboard, but set the path to theme language files.
+		if (CI_ADMIN) {
+			$this->ci->hooks->once('theme_translation', [$this, '_theme_translations']);
+			return;
+		}
+
+		// Mark theme as active.
+		$this->active = true;
+
+		// Register filters for theme layout, partial, widget, and view files.
+		$this->ci->hooks->once('theme_layouts_path', [$this, '_layouts_path']);
+		$this->ci->hooks->once('theme_partials_path', [$this, '_partials_path']);
+		$this->ci->hooks->once('theme_widgets_path', [$this, '_widgets_path']);
+		$this->ci->hooks->once('theme_views_path', [$this, '_views_path']);
+
+		// Enable these hooks if you wish to remove CiSkeleton copyright and generator.
+		$this->ci->hooks->once('skeleton_copyright', [$this, '_copyright']);
+		$this->ci->hooks->once('skeleton_generator', [$this, '_generator']);
+
+		// Enqueue assets we need for the theme.
+		$this->ci->hooks->once('after_theme_setup', [$this, '_theme_setup']);
+		$this->ci->hooks->once('extra_head', [$this, '_extra_head']);
+
+		// Enqueue theme partials.
+		$this->ci->hooks->once('enqueue_partials', [$this, '_enqueue_partials']);
+
+		// Theme layout manager.
+		$this->ci->hooks->once('theme_layout', [$this, '_set_layout']);
+
+		// Configure pagination.
+		$this->ci->hooks->once('pagination', [$this, '_set_pagination']);
+
+		// CAPTCHA filters.
+		$this->ci->hooks->once('captcha_img_height', [$this, '_captcha_img_height']);
+		$this->ci->hooks->once('captcha_border_color', [$this, '_captcha_border_color']);
+		$this->ci->hooks->once('captcha_text_color', [$this, '_captcha_text_color']);
+		$this->ci->hooks->once('captcha_grid_color', [$this, '_captcha_grid_color']);
+	}
+
 	// --------------------------------------------------------------------
-	#[AllowDynamicProperties]
-	final class Default_theme
-	{
-		/**
-		 * Instance of CI object.
-		 * @var objet
-		 */
-		protected $ci;
 
-		/**
-		 * Flag used to set theme as active or not.
-		 * @var bool
-		 */
-		public $active = false;
-
-		/**
-		 * Class constructor.
-		 * @return 	void
-		 */
-		public function __construct()
-		{
-			$this->ci = app();
-
-			// Make sure to load theme translation.
-			add_filter('theme_translation', array($this, 'theme_translation'));
-
-			// Register theme menus.
-			add_action('theme_menus', array($this, 'theme_menus'));
-
-			if (is_dashboard()) {
-				return;
-			}
-
-			$this->active = true;
-
-			// Layouts files.
-			add_filter('theme_layouts_path', array($this, 'theme_layouts_path'));
-
-			// Partials files.
-			add_filter('theme_partials_path', array($this, 'theme_partials_path'));
-
-			// Widgets files.
-			add_filter('theme_widgets_path', array($this, 'theme_widgets_path'));
-
-			// Views files.
-			add_filter('theme_views_path', array($this, 'theme_views_path'));
-
-			// Enqueue our assets.
-			add_action('after_theme_setup', array($this, 'after_theme_setup'));
-
-			// Add IE8 support.
-			add_filter('extra_head', array($this, 'extra_head'));
-
-			// Partials enqueue for caching purpose.
-			add_action('enqueue_partials', array($this, 'enqueue_partials'));
-
-			// Theme layout manager.
-			add_filter('theme_layout', array($this, 'theme_layout'));
-
-			add_filter('pagination', array($this, 'pagination'));
-
-			add_filter('skeleton_copyright', array($this, 'skeleton_copyright'));
-
-			add_filter('skeleton_generator', array($this, 'skeleton_generator'));
-
-			add_filter('alert_template', array($this, 'alert_template'));
-
-			add_filter('alert_template_js', array($this, 'alert_template_js'));
-
-			add_filter('jquery_validate_errorClass', array($this, 'jquery_validate_errorClass'));
-
-			add_filter('jquery_validate_successClass', array($this, 'jquery_validate_successClass'));
-
-			add_filter('jquery_validate_errorElement', array($this, 'jquery_validate_errorElement'));
-
-			add_filter('jquery_validate_errorPlacement', array($this, 'jquery_validate_errorPlacement'));
-
-			add_filter('jquery_validate_highlight', array($this, 'jquery_validate_highlight'));
-		}
-
-		// --------------------------------------------------------------------
-		// Views paths methods.
-		// --------------------------------------------------------------------
-
-		/**
-		 * Change paths to layouts files.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_layouts_path()
-		{
-			return $this->ci->config->theme_path('templates/layouts/');
-		}
-
-		/**
-		 * Change paths to partials files.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_partials_path()
-		{
-			return $this->ci->config->theme_path('templates/partials/');
-		}
-
-		/**
-		 * Change paths to widgets files.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_widgets_path()
-		{
-			return $this->ci->config->theme_path('templates/widgets/');
-		}
-
-		/**
-		 * Change paths to views files.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_views_path()
-		{
-			return $this->ci->config->theme_path('templates/');
-		}
-
-		// --------------------------------------------------------------------
-		// Theme translation.
-		// --------------------------------------------------------------------
-
-		/**
-		 * Set the path to theme translation files.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_translation($path)
-		{
-			return $this->ci->config->theme_path('language');
-		}
-
-		// --------------------------------------------------------------------
-		// Theme menus.
-		// --------------------------------------------------------------------
-
-		/**
-		 * Register themes available menus.
-		 * @access 	public
-		 * @return 	string
-		 */
-		public function theme_menus()
-		{
-			if (! isset($this->ci->menus)) {
-				return;
-			}
-
-			$this->ci->menus->add_location(array(
-				'header-menu'  => 'lang:main_menu',		// Main menu (translated)
-				'footer-menu'  => 'lang:footer_menu',	// Footer menu (translated)
-				'sidebar-menu' => 'lang:sidebar_menu',	// Sidebar menu (translated)
-			));
-		}
-
-		// --------------------------------------------------------------------
-		// Assets methods.
-		// --------------------------------------------------------------------
-
-		/**
-		 * This method is triggered after theme was installed.
-		 * @access 	public
-		 */
-		public function after_theme_setup()
-		{
-			// Load Google fonts.
-			$this->ci->hub->assets->css(
-				'//fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Noto+Kufi+Arabic:wght@300;400;500;700&display=swap',
-				'google-fonts',
-				null,
-				true
-			);
-
-			// Assets we need.
-			$this->ci->hub->assets
-				->fontawesome()
-				->bootstrap();
-
-			// Live?
-			if ($this->ci->hub->is_live) {
-				$this->ci->hub->theme
-					->add_meta('dns-prefetch', '//fonts.googleapis.com/', 'rel')
-					->add_meta('dns-prefetch', '//cdnjs.cloudflare.com/', 'rel');
-
-				$this->ci->hub->assets->css($this->ci->url->theme('style.min.css'), 'style', null, true);
-			} else {
-				$this->ci->hub->assets->css($this->ci->url->theme('style.css'), 'style', null, true);
-			}
-		}
-
-		/**
-		 * Add output before closing </head>
-		 * @access 	public
-		 */
-		public function extra_head($output)
-		{
-			// We add support for old browsers.
-			add_ie9_support($output, (ENVIRONMENT !== 'development'));
-			return $output;
-		}
-
-		/**
-		 * We enqueue our partial views so they get cached.
-		 * @access 	public
-		 */
-		public function enqueue_partials()
-		{
-			$this->ci->hub->theme->add_partial('navbar');
-			$this->ci->hub->theme->add_partial('sidebar');
-			$this->ci->hub->theme->add_partial('footer');
-		}
-
-		/**
-		 * Handle our theme layouts.
-		 * @access 	public
-		 * @param 	string 	$layout 	The layout to use.
-		 * @return 	string 	The layout to be used.
-		 */
-
-		public function theme_layout($layout)
-		{
-			// Change layout of Auth controller.
-			if (is_controller('auth')) {
-				return 'clean';
-			}
-			// In case of admin area.
-			elseif (is_controller('admin')) {
-				return 'admin';
-			}
-
-			// Always return the layout.
-			return $layout;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Uses Bootstrap for pagination.
-		 * @access 	public
-		 * @param 	array
-		 * @return 	array
-		 */
-		public function pagination($args)
-		{
-			$args['full_tag_open']   = '<div class="text-center"><ul class="pagination pagination-sm pagination-centered mb-0">';
-			$args['full_tag_close']  = '</ul></div>';
-			$args['num_links']       = 5;
-			$args['num_tag_open']    = '<li class="page-item">';
-			$args['num_tag_close']   = '</li>';
-			$args['prev_tag_open']   = '<li class="page-item">';
-			$args['prev_tag_close']  = '</li>';
-			$args['prev_link']       = '<i class="fa fa-fw fa-backward"></i>';
-			$args['next_tag_open']   = '<li class="page-item">';
-			$args['next_tag_close']  = '</li>';
-			$args['next_link']       = '<i class="fa fa-fw fa-forward"></i>';
-			$args['first_tag_open']  = '<li class="page-item">';
-			$args['first_tag_close'] = '</li>';
-			$args['first_link']      = '<i class="fa fa-fw fa-fast-backward"></i>';
-			$args['last_tag_open']   = '<li class="page-item">';
-			$args['last_tag_close']  = '</li>';
-			$args['last_link']       = '<i class="fa fa-fw fa-fast-forward"></i>';
-			$args['cur_tag_open']    = '<li class="page-item active"><span class="page-link">';
-			$args['cur_tag_close']   = '<span class="sr-only">(current)</span></span></li>';
-
-			return $args;
-		}
-
-		// --------------------------------------------------------------------
-		// Other...
-		// --------------------------------------------------------------------
-
-		/**
-		 * The CodeIgniter Skeleton comes with a copyright added to your final
-		 * HTML output. We really appreciate the fact that you keep it, it is a
-		 * way to say "Oh yeah, another person using my project.".
-		 * If you want to remove it, and you have the right to do it, the filter
-		 * below show you how to do it.
-		 * @param 	string 	$copyright
-		 * @return 	string
-		 */
-		public function skeleton_copyright($content)
-		{
-			// Change it or return an empty string
-			// return null or $content = null;
-			return $content;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Removes or changes the Skeleton generator meta tag.
-		 * @param 	string 	$content
-		 * @return 	string
-		 */
-		public function skeleton_generator($content)
-		{
-			// Change it or return an empty string
-			// return null or $content = null;
-			return $content;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Because the Theme library comes with Bootstrap 4 alert template,
-		 * we make sure to change the template to use Bootstrap 3 alert.
-		 * @since 	2.0
-		 */
-		private $_alert_template = <<<HTML
-<div class="{class} alert-dismissible" role="alert">
-	{message}
-	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="%s"></button>
-</div>
-HTML;
-		public function alert_template($output)
-		{
-			return $this->_alert_template;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Because the Theme library comes with Bootstrap 4 alert template,
-		 * we make sure to change the template to use Bootstrap 3 alert.
-		 * @since 	2.0
-		 */
-		private $_alert_template_js = <<<JS
-'<div class="{class} alert-dismissible fade show" role="alert">'
-+ '{message}'
-+ '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="%s"></button>'
-+ '</div>'
-JS;
-		public function alert_template_js($output)
-		{
-			return $this->_alert_template_js;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * The jQuery validate library comes with Bootstrap 4 defaults. We make
-		 * sure to change to Bootstrap 3.
-		 * @since 	2.0
-		 */
-
-		/**
-		 * Class used for invalid inputs.
-		 * @see https://jqueryvalidation.org/validate/#errorclass
-		 */
-		public function jquery_validate_errorClass($class)
-		{
-			return 'is-invalid';
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Class used for valid inputs.
-		 * @see https://jqueryvalidation.org/validate/#errorclass
-		 */
-		public function jquery_validate_successClass($class)
-		{
-			return 'is-valid';
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Use this element type to create error messages and to look
-		 * for existing error messages. Default: "label".
-		 * @see https://jqueryvalidation.org/validate/#errorelement
-		 */
-		public function jquery_validate_errorElement($el)
-		{
-			return 'small';
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Customize placement of created error labels.
-		 * @see https://jqueryvalidation.org/validate/#errorplacement
-		 */
-		private $_jquery_validate_errorPlacement = 'function (error, element) { error.addClass("invalid-feedback"); element.next(".invalid-feedback").remove(); if (element.prop("type") === "checkbox") { error.insertAfter(element.parent("label")); } else { error.insertAfter(element); } }';
-		public function jquery_validate_errorPlacement($output)
-		{
-			return $this->_jquery_validate_errorPlacement;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * How to highlight invalid fields.
-		 * @see https://jqueryvalidation.org/validate/#highlight
-		 */
-		private $_jquery_validate_highlight = 'function (element, errorClass, validClass) { $(element).addClass("is-invalid").removeClass("is-valid"); }';
-		public function jquery_validate_highlight($function)
-		{
-			return $this->_jquery_validate_highlight;
-		}
-
-		// --------------------------------------------------------------------
-
-		/**
-		 * Called to revert changes made by option highlight,
-		 * same arguments as highlight.
-		 * @see https://jqueryvalidation.org/validate/#unhighlight
-		 */
-		private $_jquery_validate_unhighlight = 'function (element, errorClass, validClass) { $(element).addClass("is-valid").removeClass("is-invalid"); }';
-		public function jquery_validate_unhighlight($function)
-		{
-			return $this->_jquery_validate_unhighlight;
-		}
-
-	}
-// --------------------------------------------------------------------
-endif; // End of class Default_theme.
-// --------------------------------------------------------------------
-
-// Initialize class but skip the rest for dashboard.
-$default_theme = new Default_theme();
-if (! $default_theme->active) {
-	return;
-}
-
-if (! function_exists('fa_icon')) {
 	/**
-	 * Useful to generate a fontawesome icon.
-	 * @param   none
-	 * @param   string $after
-	 * @param   string $before
-	 * @return  string
+	 * Returns the path to the theme's language folder.
+	 *
+	 * @return string
 	 */
-	function fa_icon($class = '', string $after = '', string $before = '')
+	public function _theme_translations()
 	{
-		static $template = '<i class="fa fa-fw fa-%s"></i>'; // remember it.
-
-		$icon = sprintf($template, $class);
-
-		empty($after) || $icon .= $after;
-
-		empty($before) || $icon = $before.$icon;
-
-		return $icon;
-	}
-}
-
-// --------------------------------------------------------------------
-
-if (! function_exists('bs_label')) {
-	function bs_label($content = '', $type = 'default')
-	{
-		return "<span class=\"label label-{$type}\">{$content}</span>";
-	}
-}
-
-/**
- * Example filters on how to edit captcha the way you want
- * @since 	1.0.0
- * We use a class for better performance and to avoid any possible
- * conflict with other components.
- */
-if (! class_exists('Csk200_captcha_class', false)) {
-	class Csk200_captcha_class
-	{
-		protected $ci;
-
-		public function __construct()
-		{
-			$this->ci = app();
-		}
-
-		public function init()
-		{
-			add_filter('captcha_font_path', array($this, 'font_path'));
-			add_filter('captcha_font_size', array($this, 'font_size'));
-			add_filter('captcha_word_length', array($this, 'word_length'));
-			add_filter('captcha_img_width', array($this, 'img_width'));
-			add_filter('captcha_img_height', array($this, 'img_height'));
-			add_filter('captcha_background_color', array($this, 'background_color'));
-			add_filter('captcha_border_color', array($this, 'border_color'));
-			add_filter('captcha_text_color', array($this, 'text_color'));
-			add_filter('captcha_grid_color', array($this, 'grid_color'));
-		}
-
-		// Font file.
-		public function font_path($path)
-		{
-			// To use theme's provided font.
-			// return $this->ci->config->theme_path('assets/fonts/Vigasr.ttf');
-
-			// To use CodeIgniter texb.ttf:
-			// return BASEPATH.'fonts/texb.ttf';
-
-			// To use GD ugly font:
-			// return false;
-
-			// To use default.
-			return $path;
-		}
-
-		// Font size.
-		public function font_size($size)
-		{
-			$size = 16;
-			return $size;
-		}
-
-		// Word length.
-		public function word_length($length)
-		{
-			return 5;
-			return $length;
-		}
-
-		// Image width.
-		public function img_width($w)
-		{
-			$w = 150;
-			return $w;
-		}
-
-		// Image height.
-		public function img_height($h)
-		{
-			$h = 40;
-			return $h;
-		}
-
-		// Background color.
-		public function background_color($rgb)
-		{
-			// Return RGB color.
-			return array(255, 255, 255);
-		}
-
-		// Border color:
-		public function border_color($rgb)
-		{
-			// Return RGB color.
-			return array(204, 204, 204);
-		}
-
-		// Text Color:
-		public function text_color($rgb)
-		{
-			// Return RGB color.
-			return array(40, 96, 144);
-		}
-
-		// Grid color.
-		public function grid_color($rgb)
-		{
-			// Return RGB color.
-			return array(101, 173, 233);
-		}
-
+		return $this->path.'language/';
 	}
 
-	// Initialize class.
-	$csk200_captcha_class = new Csk200_captcha_class();
-	$csk200_captcha_class->init();
+	// --------------------------------------------------------------------
+
+	/**
+	 * Returns the path to theme's layouts folder.
+	 *
+	 * @return string
+	 */
+	public function _layouts_path()
+	{
+		return $this->path.'templates/layouts/';
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Returns the path to theme's partials folder.
+	 *
+	 * @return string
+	 */
+	public function _partials_path()
+	{
+		return $this->path.'templates/partials/';
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Returns the path to theme's widgets folder.
+	 *
+	 * @return string
+	 */
+	public function _widgets_path()
+	{
+		return $this->path.'templates/widgets/';
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Returns the path to theme's views folder.
+	 *
+	 * @return string
+	 */
+	public function _views_path()
+	{
+		return $this->path.'templates/';
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * This method is triggered after theme was installed.
+	 *
+	 * @return void
+	 */
+	public function _theme_setup()
+	{
+		// Queue default dashboard font 'Fira Sans':
+		$this->ci->hub->assets->google_font('Fira+Sans', 'ital,wght@0,400;0,700;1,400;1,700');
+
+		// Queue Arabic/Persian dashboard font 'Noto Kufi Arabic':
+		if ($this->ci->lang->current === 'arabic' || $this->ci->lang->current === 'persian') {
+			$this->ci->hub->assets->google_font('Noto Kufi Arabic', '100..900');
+		}
+
+		// Enqueue FontAwesome and Bootstrap.
+		$this->ci->hub->assets->fontawesome()->bootstrap();
+
+		// Assets we queue in production mode.
+		if (CI_LIVE) {
+			$this->ci->hub->theme->add_meta('dns-prefetch', '//fonts.googleapis.com/', 'rel');
+			$this->ci->hub->assets->css($this->ci->url->theme('style.min.css'), 'style', null, true);
+		} else {
+			$this->ci->hub->assets->css($this->ci->url->theme('style.css'), 'style', null, true);
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Adds IE8 support.
+	 *
+	 * @param  string $content
+	 * @return string
+	 */
+	public function _extra_head($content)
+	{
+		// We add support for old browsers.
+		add_ie9_support($output, CI_LIVE);
+		return $output;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Enqueues partial files.
+	 *
+	 * @return void
+	 */
+	public function _enqueue_partials()
+	{
+		// Default partials, queued no matter the section.
+		$this->ci->hub->theme
+			->add_partial('header')
+			->add_partial('footer');
+
+		// Nothing to had for blog module.
+		if ($this->ci->router->module === 'blog') {
+			return;
+		}
+
+		// Add default sidebar.
+		$this->ci->hub->theme->add_partial('sidebar');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Handles setting current layout to use.
+	 *
+	 * @param  string $layout  Layout being filtered.
+	 * @return string
+	 */
+	public function _set_layout($layout) {
+		// Use `clean` layout for authentication (`Auth.php` controller).
+		if ($this->ci->router->is_class('auth')) {
+			return 'clean';
+		}
+
+		// Use `full` layout for blog module.
+		if ($this->ci->router->is_module('pages')) {
+			return 'default';
+		}
+
+		// Return what was passed as-is.
+		return $layout;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Configure CiSkeleton pagination.
+	 *
+	 * @param  array $config
+	 * @return array
+	 */
+	public function _set_pagination($config)
+	{
+		$config['full_tag_open'] = '<div class="text-center"><ul class="pagination pagination-sm pagination-centered mb-0">';
+		$config['full_tag_close'] = '</ul></div>';
+		$config['num_links'] = 5;
+		$config['num_tag_open'] = '<li class="page-item">';
+		$config['num_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li class="page-item">';
+		$config['prev_tag_close'] = '</li>';
+		$config['prev_link'] = '<i class="fa fa-fw fa-backward"></i>';
+		$config['next_tag_open'] = '<li class="page-item">';
+		$config['next_tag_close'] = '</li>';
+		$config['next_link'] = '<i class="fa fa-fw fa-forward"></i>';
+		$config['first_tag_open'] = '<li class="page-item">';
+		$config['first_tag_close'] = '</li>';
+		$config['first_link'] = '<i class="fa fa-fw fa-fast-backward"></i>';
+		$config['last_tag_open'] = '<li class="page-item">';
+		$config['last_tag_close'] = '</li>';
+		$config['last_link'] = '<i class="fa fa-fw fa-fast-forward"></i>';
+		$config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+		$config['cur_tag_close'] = '<span class="sr-only">(current)</span></span></li>';
+
+		return $config;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * CiSkeleton comes with a copyright added to your final HTML output.
+	 * We really appreciate the fact that you keep it, it is a way to say
+	 * `Oh yeah, another person is using my project.`.
+	 *
+	 * If you want to remove it, and have the right to do it, this filter shows
+	 * you how do it.
+	 *
+	 * @param  string $content
+	 * @return string
+	 */
+	public function _copyright($content)
+	{
+		// Change it or return an empty string.
+		return $content;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Just like CiSkeleton copyright, if you wish to remove the `generator`
+	 * meta tag, feel free to return an empty string or replace it with yours.
+	 *
+	 * @param  string $generator
+	 * @return string
+	 */
+	public function _generator($generator)
+	{
+		return $generator;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Changes CAPTCHA image height.
+	 *
+	 * @param  int $height
+	 * @return int
+	 */
+	public function _captcha_img_height($height)
+	{
+		return 38;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Changes CAPTCHA border color.
+	 *
+	 * @param  array $rgb
+	 * @return array
+	 */
+	public function _captcha_border_color($rgb)
+	{
+		return [204, 204, 204];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Changes CAPTCHA text color.
+	 *
+	 * @param  array $rgb
+	 * @return array
+	 */
+	public function _captcha_text_color($rgb)
+	{
+		return [40, 96, 144];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Changes CAPTCHA image grid color.
+	 *
+	 * @param  array $rgb
+	 * @return array
+	 */
+	public function _captcha_grid_color($rgb)
+	{
+		return [101, 173, 233];
+	}
+
 }
+
+$theme = new CI_Theme_Default();
+unset($theme);

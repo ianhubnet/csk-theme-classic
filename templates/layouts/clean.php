@@ -1,4 +1,4 @@
-<?= $this->theme->partial('navbar') ?>
+<?= $this->theme->partial('header') ?>
 <div class="container">
 	<?= $this->ui->alerts() ?>
 	<?= $this->theme->content() ?>
