@@ -16,6 +16,4 @@
 		?>
 	</div><!--/.container-->
 </main><!--/#wrapper-->
-<?php
-echo $this->hub->theme->partial('cookies');
-echo $this->hub->theme->partial('footer');
+<?= $this->theme->partial('footer') ?>

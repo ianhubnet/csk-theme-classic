@@ -23,14 +23,16 @@ final class CI_Theme_Default
 
 	public function __construct()
 	{
+		// Bail early for dashboard.
+		if (CI_ADMIN) {
+			return;
+		}
+
 		$this->ci = app();
 		$this->path = $this->ci->config->theme_path();
 
-		// Bail early for dashboard, but set the path to theme language files.
-		if (CI_ADMIN) {
-			$this->ci->hooks->once('theme_translation', [$this, '_theme_translations']);
-			return;
-		}
+		// Set path to theme language files.
+		$this->ci->hooks->once('theme_translation', [$this, '_theme_translations']);
 
 		// Mark theme as active.
 		$this->active = true;
@@ -60,9 +62,11 @@ final class CI_Theme_Default
 
 		// CAPTCHA filters.
 		$this->ci->hooks->once('captcha_img_height', [$this, '_captcha_img_height']);
+		$this->ci->hooks->once('captcha_background_color', [$this, '_captcha_background_color']);
 		$this->ci->hooks->once('captcha_border_color', [$this, '_captcha_border_color']);
 		$this->ci->hooks->once('captcha_text_color', [$this, '_captcha_text_color']);
 		$this->ci->hooks->once('captcha_grid_color', [$this, '_captcha_grid_color']);
+		$this->ci->hooks->once('captcha_img_class', [$this, '_captcha_img_class']);
 	}
 
 	// --------------------------------------------------------------------
@@ -297,6 +301,19 @@ final class CI_Theme_Default
 	// --------------------------------------------------------------------
 
 	/**
+	 * Changes CAPTCHA background color.
+	 *
+	 * @param  array $rgb
+	 * @return array
+	 */
+	public function _captcha_background_color($rgb)
+	{
+		return [255, 255, 255];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Changes CAPTCHA border color.
 	 *
 	 * @param  array $rgb
@@ -304,7 +321,7 @@ final class CI_Theme_Default
 	 */
 	public function _captcha_border_color($rgb)
 	{
-		return [204, 204, 204];
+		return [206, 212, 218];
 	}
 
 	// --------------------------------------------------------------------
@@ -317,7 +334,7 @@ final class CI_Theme_Default
 	 */
 	public function _captcha_text_color($rgb)
 	{
-		return [40, 96, 144];
+		return [33, 37, 41];
 	}
 
 	// --------------------------------------------------------------------
@@ -330,10 +347,25 @@ final class CI_Theme_Default
 	 */
 	public function _captcha_grid_color($rgb)
 	{
-		return [101, 173, 233];
+		return [173, 181, 189];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Changes CAPTCHA image class.
+	 *
+	 * @param  array $rgb
+	 * @return array
+	 */
+	public function _captcha_img_class($class)
+	{
+		return 'img-fluid rounded-1';
 	}
 
 }
 
-$theme = new CI_Theme_Default();
-unset($theme);
+(function () {
+	$theme = new CI_Theme_Default();
+})();
+
