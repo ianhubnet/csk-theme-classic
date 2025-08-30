@@ -37,12 +37,6 @@ final class CI_Theme_Default
 		// Mark theme as active.
 		$this->active = true;
 
-		// Register filters for theme layout, partial, widget, and view files.
-		$this->ci->hooks->once('theme_layouts_path', [$this, '_layouts_path']);
-		$this->ci->hooks->once('theme_partials_path', [$this, '_partials_path']);
-		$this->ci->hooks->once('theme_widgets_path', [$this, '_widgets_path']);
-		$this->ci->hooks->once('theme_views_path', [$this, '_views_path']);
-
 		// Enable these hooks if you wish to remove CiSkeleton copyright and generator.
 		$this->ci->hooks->once('skeleton_copyright', [$this, '_copyright']);
 		$this->ci->hooks->once('skeleton_generator', [$this, '_generator']);
@@ -79,54 +73,6 @@ final class CI_Theme_Default
 	public function _theme_translations()
 	{
 		return $this->path.'language/';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Returns the path to theme's layouts folder.
-	 *
-	 * @return string
-	 */
-	public function _layouts_path()
-	{
-		return $this->path.'templates/layouts/';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Returns the path to theme's partials folder.
-	 *
-	 * @return string
-	 */
-	public function _partials_path()
-	{
-		return $this->path.'templates/partials/';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Returns the path to theme's widgets folder.
-	 *
-	 * @return string
-	 */
-	public function _widgets_path()
-	{
-		return $this->path.'templates/widgets/';
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Returns the path to theme's views folder.
-	 *
-	 * @return string
-	 */
-	public function _views_path()
-	{
-		return $this->path.'templates/';
 	}
 
 	// --------------------------------------------------------------------

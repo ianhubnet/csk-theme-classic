@@ -65,7 +65,7 @@
 
 			<?= form_close() ?><!--/.card-body-->
 
-			<?php if (! SITE_OFFLINE): ?>
+			<?php if (! CI_OFFLINE): ?>
 			<div class="card-footer bg-body-secondary border-top-0">
 				<div class="d-grid d-lg-flex gap-2">
 					<!-- lost password button -->
