@@ -19,7 +19,7 @@
 					<button type="submit" class="btn btn-link"><span class="fa fa-sign-in"></span></button>
 				</form>
 			<?php endif; ?>
-			<?php if (APP_I18N): ?>
+			<?php if (CI_POLYLANG): ?>
 				<li class="nav-item dropdown">
 					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->hub->lang->current('name_current') ?> <span class="caret"></span></a>
 					<div class="dropdown-menu dropdown-menu-end dropdown-menu-scroll">

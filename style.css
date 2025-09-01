@@ -218,7 +218,6 @@ footer.navbar .menu-item {
 }
 
 .dropdown-menu-scroll {
-	min-height: 12rem;
 	max-height: calc(100vh - 13rem);
 	overflow-y: auto;
 	overscroll-behavior: contain;
