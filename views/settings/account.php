@@ -43,7 +43,7 @@
 							<?php foreach ($logs as $log): ?>
 							<tr>
 								<td><?= $log['browser'].', '.$log['platform'] ?></td>
-								<td class="text-center"><?= $log['ip_address'] ?></td>
+								<td class="text-center"><?= $log['ip_anchor'] ?? $log['ip_address'] ?></td>
 								<td class="text-end"><?= date_formatter($log['created_at'], 'datetime') ?></td>
 							</tr>
 							<?php endforeach; ?>
