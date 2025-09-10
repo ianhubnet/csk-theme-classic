@@ -1,7 +1,5 @@
 <?php
 
-defined('BASEPATH') || exit('A moment of silence for your attempt.');
-
 return array(
 	'name'         => 'Default',
 	'theme_uri'    => 'https://github.com/ianhubnet/csk-theme-default/',
