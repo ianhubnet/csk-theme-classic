@@ -7,7 +7,7 @@
 		</button>
 
 		<div class="navbar-collapse collapse" id="navbar-collapse">
-			<?= $this->menus->render('primary', [
+			<?= $this->hub->menus->render('primary', [
 				'menu_attrs' => ['class' => 'navbar-nav me-auto'],
 				'item_attrs' => ['class' => 'nav-item'],
 				'link_attrs' => ['class' => 'nav-link']

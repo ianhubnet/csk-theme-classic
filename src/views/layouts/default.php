@@ -1,4 +1,4 @@
-<?= $this->theme->partial('header') ?>
+<?= $this->hub->theme->partial('header') ?>
 <main role="main" class="wrapper pt-3 pb-5">
 	<div class="container">
 		<?php
@@ -16,4 +16,4 @@
 		?>
 	</div><!--/.container-->
 </main><!--/#wrapper-->
-<?= $this->theme->partial('footer') ?>
+<?= $this->hub->theme->partial('footer') ?>

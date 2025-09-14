@@ -1,4 +1,4 @@
-<?= $this->menus->render('sidebar', [
+<?= $this->hub->menus->render('sidebar', [
 	'container' => 'nav',
 	'container_attrs' => ['class' => 'navbar'],
 	'menu_attrs' => ['class' => 'nav nav-pills nav-underline mb-2'],

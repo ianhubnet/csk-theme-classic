@@ -53,6 +53,6 @@
 	</div><!--/.col-->
 
 	<div class="col-12 col-md-3 order-md-1 mt-3 mt-md-0">
-		<?= $this->theme->widget('navbar') ?>
+		<?= $this->hub->theme->widget('navbar') ?>
 	</div><!--/.col-->
 </div>
