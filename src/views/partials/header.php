@@ -40,8 +40,8 @@
 						// The following is hidden is maintenance mode.
 						if ($this->user->has_offline()) {
 							echo anchor('user/'.$this->user->username, line('view_profile'), 'class="dropdown-item"');
-							if ($this->module->enabled('settings')) {
-								echo anchor('settings', line('settings'), 'class="dropdown-item"');
+							if ($this->module->enabled('account')) {
+								echo anchor('account', line('settings'), 'class="dropdown-item"');
 							}
 							echo '<hr class="dropdown-divider">';
 						}

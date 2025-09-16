@@ -18,6 +18,12 @@ $config['primary'] = [
 		'title' => 'lang:blog',
 		'href'  => 'blog',
 		'show_if' => ['module' => 'blog'],
+	],
+
+	[
+		'title' => 'lang:contact_us',
+		'href'  => 'contact',
+		'show_if' => ['module' => 'contact'],
 	]
 ];
 
