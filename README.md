@@ -1,1 +1,1 @@
-# CI Skeleton - Default Theme
+# CI Skeleton - Classic (Default) Theme

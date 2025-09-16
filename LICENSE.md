@@ -1,8 +1,8 @@
-# End-User License Agreement (EULA) for "Default" Theme
+# End-User License Agreement (EULA) for "Classic" Theme
 
 **Copyright © 2025 Ianhub™. All rights reserved.**
 
-This End-User License Agreement ("Agreement") governs the use of the **"Default" theme** ("Theme"), developed for the CodeIgniter Skeleton (CSK) framework.
+This End-User License Agreement ("Agreement") governs the use of the **"Classic" theme** ("Theme"), developed for the CodeIgniter Skeleton (CSK) framework.
 
 By purchasing, downloading, installing, or using this Theme, you ("Licensee") agree to be bound by the terms of this Agreement.
 
@@ -10,7 +10,7 @@ By purchasing, downloading, installing, or using this Theme, you ("Licensee") ag
 
 ## 1. Grant of License
 
-You are granted a limited, non-exclusive, non-transferable, non-sublicensable license to use the "Default" theme  **in one CSK-powered project** per license purchased. This license is for commercial or personal use, depending on your purchase.
+You are granted a limited, non-exclusive, non-transferable, non-sublicensable license to use the "Classic" theme  **in one CSK-powered project** per license purchased. This license is for commercial or personal use, depending on your purchase.
 
 ---
 
