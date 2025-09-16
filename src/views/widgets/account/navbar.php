@@ -10,7 +10,7 @@
 	]);
 
 	if (! $this->config->item('use_gravatar')) {
-		echo anchor('account/avatar', line('avatar'), [
+		echo anchor('account/avatar', line('profile_picture'), [
 			'class' => 'list-group-item'.($uri === 'avatar' ? ' active' : '')
 		]);
 	}
