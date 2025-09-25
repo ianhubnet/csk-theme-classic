@@ -1,55 +1,50 @@
-<div class="row justify-content-center">
-	<div class="col-12 col-md-8 col-lg-6 col-xl-4">
-		<h1 class="text-center h4 mb-2"><?= line('reset_password') ?></h1>
+<h1 class="text-center h4 mb-2"><?= line('reset_password') ?></h1>
 
-		<div class="card">
-			<?= form_open('', 'role="form" id="reset-password" class="card-body"', $hidden) ?>
+<div class="card">
+	<?= form_open('', 'role="form" id="reset-password" class="card-body"', $hidden) ?>
 
-				<!-- new password -->
-				<div class="mb-2">
-					<label for="npassword" class="form-label mb-1 visually-hidden"><?= line('new_password') ?></label>
-					<?= print_input($npassword, ['class' => error_class('npassword', 'form-control form-control-sm')]) ?>
-					<?= form_error('npassword') ?>
-				</div>
+		<!-- new password -->
+		<div class="mb-2">
+			<label for="npassword" class="form-label mb-1 visually-hidden"><?= line('new_password') ?></label>
+			<?= print_input($npassword, ['class' => error_class('npassword', 'form-control form-control-sm')]) ?>
+			<?= form_error('npassword') ?>
+		</div>
 
-				<!-- confirm password -->
-				<div class="mb-2">
-					<label for="cpassword" class="form-label mb-1 visually-hidden"><?= line('confirm_password') ?></label>
-					<?= print_input($cpassword, ['class' => error_class('cpassword', 'form-control form-control-sm')]) ?>
-					<?= form_error('cpassword') ?>
-				</div>
+		<!-- confirm password -->
+		<div class="mb-2">
+			<label for="cpassword" class="form-label mb-1 visually-hidden"><?= line('confirm_password') ?></label>
+			<?= print_input($cpassword, ['class' => error_class('cpassword', 'form-control form-control-sm')]) ?>
+			<?= form_error('cpassword') ?>
+		</div>
 
-			<?php if (isset($captcha)): if ($this->config->item('use_recaptcha')): ?>
-				<!-- google recaptcha -->
-				<div class="mb-2 text-center">
-					<?= $captcha ?>
-					<?= form_error('g-recaptcha-response') ?>
-				</div>
+	<?php if (isset($captcha_image)): ?>
+		<!-- captcha -->
+		<div class="row row-cols-1 row-cols-md-2 mb-2">
+			<div class="col" tabindex="-1">
+				<?= $captcha_image ?>
+			</div>
+			<div class="col">
+				<?= print_input($captcha, ['class' => error_class('captcha', 'form-control')]) ?>
+				<?= form_error('captcha') ?>
+			</div>
+		</div>
+	<?php elseif (isset($captcha)): ?>
+		<!-- google recaptcha -->
+		<div class="mb-2 text-center">
+			<div class="<?= error_class('g-recaptcha-response', '') ?>"><?= $captcha ?></div>
+			<?= form_error('g-recaptcha-response') ?>
+		</div>
+	<?php endif; ?>
 
-			<?php else: ?>
-				<!-- captcha -->
-				<div class="row row-cols-1 row-cols-md-2 mb-2">
-					<div class="col" tabindex="-1">
-						<?= $captcha_image ?>
-					</div>
-					<div class="col">
-						<?= print_input($captcha, ['class' => error_class('captcha', 'form-control')]) ?>
-						<?= form_error('captcha') ?>
-					</div>
-				</div>
-			<?php endif; endif; ?>
+		<div class="d-grid">
+			<button role="button" type="submit" class="btn btn-primary btn-sm"><?= line('reset_password') ?></button>
+		</div><!--/.d-grid-->
 
-				<div class="d-grid">
-					<button role="button" type="submit" class="btn btn-primary btn-sm"><?= line('reset_password') ?></button>
-				</div><!--/.d-grid-->
+	<?= form_close() ?><!--/.card-body-->
 
-			<?= form_close() ?><!--/.card-body-->
-
-			<div class="card-footer bg-body-secondary border-top-0">
-				<div class="d-grid">
-					<?= anchor('login', line('login'), 'class="btn btn-light btn-sm"') ?>
-				</div><!--/.d-grid-->
-			</div><!--/.card-footer-->
-		</div><!--/.card-->
-	</div><!--/.col-->
-</div><!--/.row-->
+	<div class="card-footer bg-body-secondary border-top-0">
+		<div class="d-grid">
+			<?= anchor('login', line('login'), 'class="btn btn-light btn-sm"') ?>
+		</div><!--/.d-grid-->
+	</div><!--/.card-footer-->
+</div><!--/.card-->

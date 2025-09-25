@@ -66,7 +66,7 @@
 	once_filter('theme_layout', function ($layout, $ci) {
 		// Use `clean` layout for authentication (`Auth.php` controller).
 		if ($ci->router->is_class('auth')) {
-			return 'clean';
+			return 'auth';
 		}
 
 		// Use `full` layout for blog module.
@@ -140,5 +140,12 @@
 	once_filter('captcha_text_color', fn($rgb) => [33, 37, 41]);
 	once_filter('captcha_grid_color', fn($rgb) => [173, 181, 189]);
 	once_filter('captcha_img_class', fn($class) => 'img-fluid rounded-1');
+
+	/**
+	 * Filters to set reCAPTCHA theme and size.
+	 * Only applicable if reCAPTCHA is enabled.
+	 */
+	once_filter('recaptcha_theme', fn($theme) => 'light'); // light or dark
+	once_filter('recaptcha_size', fn($size) => 'normal'); // normal or compact
 
 })();
