@@ -47,11 +47,11 @@
 
 	<?php if (isset($captcha_image)): ?>
 		<!-- captcha -->
-		<div class="row row-cols-1 row-cols-md-2 mb-2">
-			<div class="col" tabindex="-1">
+		<div class="d-flex gap-2 mb-2">
+			<div class="flex-fill" tabindex="-1">
 				<?= $captcha_image ?>
 			</div>
-			<div class="col">
+			<div class="flex-fill">
 				<?= print_input($captcha, ['class' => error_class('captcha', 'form-control form-control-sm')]) ?>
 				<?= form_error('captcha') ?>
 			</div>
