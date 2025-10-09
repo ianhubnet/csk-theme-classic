@@ -49,7 +49,11 @@
 					<div class="row justify-content-end mb-3">
 						<div class="col-sm-8">
 							<div class="form-check mb-0">
-								<?= form_checkbox('two_factor_auth', '1', $this->user->two_factor_auth, 'id="two_factor_auth" class="form-check-input"') ?>
+								<?= form_checkbox(
+									'two_factor_auth', '1',
+									$this->user->get_preference('two_factor_auth', false),
+									['id' => 'two_factor_auth', 'class' => 'form-check-input'])
+								?>
 								<label class="form-check-label ml-2" for="two_factor_auth"><?= line('two_factor_auth') ?></label>
 								<p class="form-text mb-0"><?= line('two_factor_auth_tip') ?></p>
 							</div>
