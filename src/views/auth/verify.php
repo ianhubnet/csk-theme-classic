@@ -4,7 +4,7 @@
 	<?= form_open('login-2fa', 'role="form" id="login" class="card-body mb-0"', $hidden) ?>
 
 		<!-- authentication code -->
-		<div class="mb-3">
+		<div>
 			<label for="tfa" class="form-label mb-1 visually-hidden"><?= line('auth_code') ?></label>
 			<?= print_input($tfa, [
 				'autofocus' => 'autofocus',
@@ -15,7 +15,7 @@
 
 	<?php if (isset($captcha_image)): ?>
 		<!-- captcha -->
-		<div class="d-flex gap-2 mb-2">
+		<div class="d-flex gap-2 mt-2">
 			<div class="flex-fill" tabindex="-1">
 				<?= $captcha_image ?>
 			</div>
@@ -26,13 +26,13 @@
 		</div>
 	<?php elseif (isset($captcha)): ?>
 		<!-- google recaptcha -->
-		<div class="mb-3 text-center">
+		<div class="mt-2 text-center">
 			<div class="<?= error_class('g-recaptcha-response', '') ?>"><?= $captcha ?></div>
 			<?= form_error('g-recaptcha-response') ?>
 		</div>
 	<?php endif; ?>
 
-		<div class="d-grid">
+		<div class="d-grid mt-3">
 			<button role="button" type="submit" class="btn btn-primary btn-sm"><?= line('login') ?></button>
 		</div><!--/.d-grid-->
 

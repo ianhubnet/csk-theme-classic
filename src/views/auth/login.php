@@ -11,14 +11,14 @@
 	<?= form_open('login', 'role="form" id="login" class="card-body"', $hidden) ?>
 
 		<!-- username/email address -->
-		<div class="mb-2">
+		<div>
 			<label for="<?= $login_type ?>" class="form-label mb-1 visually-hidden"><?= _translate($login['placeholder']) ?></label>
 			<?= print_input($login, ['class' => error_class($login_type, 'form-control form-control-sm')]) ?>
 			<?= form_error($login_type) ?>
 		</div>
 
 		<!-- password -->
-		<div class="mb-2">
+		<div class="mt-2">
 			<label for="password" class="form-label mb-1 visually-hidden"><?= line('password') ?></label>
 			<?= print_input($password, ['class' => error_class('password', 'form-control form-control-sm')]) ?>
 			<?= form_error('password') ?>
@@ -26,7 +26,7 @@
 
 	<?php if (isset($captcha_image)): ?>
 		<!-- captcha -->
-		<div class="d-flex gap-2 mb-2">
+		<div class="d-flex gap-2 mt-2">
 			<div class="flex-fill" tabindex="-1">
 				<?= $captcha_image ?>
 			</div>
@@ -37,7 +37,7 @@
 		</div>
 	<?php elseif (isset($captcha)): ?>
 		<!-- google recaptcha -->
-		<div class="mb-2 text-center">
+		<div class="mt-2 text-center">
 			<div class="<?= error_class('g-recaptcha-response', '') ?>"><?= $captcha ?></div>
 			<?= form_error('g-recaptcha-response') ?>
 		</div>
@@ -45,14 +45,14 @@
 
 	<?php if (isset($remember)): ?>
 		<!-- remember me -->
-		<div class="form-check form-switch mb-2">
+		<div class="form-check form-switch mt-3">
 			<?= print_input($remember, ['class' => 'form-check-input', 'role' => 'switch']) ?>
 			<label for="remember" class="form-check-label"><?= line('remember_me') ?></label>
 		</div>
 	<?php endif; ?>
 
 		<!-- login button -->
-		<div class="d-grid d-lg-flex gap-2">
+		<div class="d-grid d-lg-flex gap-2 mt-3">
 			<button role="button" type="submit" class="btn btn-primary btn-sm flex-fill"><?= line('login') ?></button>
 			<?php if ($this->config->item('allow_quick_login')): ?>
 			<!-- quick-login button -->

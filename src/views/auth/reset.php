@@ -4,14 +4,14 @@
 	<?= form_open('', 'role="form" id="reset-password" class="card-body"', $hidden) ?>
 
 		<!-- new password -->
-		<div class="mb-2">
+		<div>
 			<label for="npassword" class="form-label mb-1 visually-hidden"><?= line('new_password') ?></label>
 			<?= print_input($npassword, ['class' => error_class('npassword', 'form-control form-control-sm')]) ?>
 			<?= form_error('npassword') ?>
 		</div>
 
 		<!-- confirm password -->
-		<div class="mb-2">
+		<div class="mt-2">
 			<label for="cpassword" class="form-label mb-1 visually-hidden"><?= line('confirm_password') ?></label>
 			<?= print_input($cpassword, ['class' => error_class('cpassword', 'form-control form-control-sm')]) ?>
 			<?= form_error('cpassword') ?>
@@ -19,7 +19,7 @@
 
 	<?php if (isset($captcha_image)): ?>
 		<!-- captcha -->
-		<div class="d-flex gap-2 mb-2">
+		<div class="d-flex gap-2 mt-2">
 			<div class="flex-fill" tabindex="-1">
 				<?= $captcha_image ?>
 			</div>
@@ -30,13 +30,13 @@
 		</div>
 	<?php elseif (isset($captcha)): ?>
 		<!-- google recaptcha -->
-		<div class="mb-2 text-center">
+		<div class="mt-2 text-center">
 			<div class="<?= error_class('g-recaptcha-response', '') ?>"><?= $captcha ?></div>
 			<?= form_error('g-recaptcha-response') ?>
 		</div>
 	<?php endif; ?>
 
-		<div class="d-grid">
+		<div class="d-grid mt-3">
 			<button role="button" type="submit" class="btn btn-primary btn-sm"><?= line('reset_password') ?></button>
 		</div><!--/.d-grid-->
 

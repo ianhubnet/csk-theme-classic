@@ -6,7 +6,7 @@
 				<?= $this->hub->ui->alerts() ?>
 				<?= $this->hub->theme->content() ?>
 			</article>
-			<aside class="col-lg-3 mt-3 mt-lg-0">
+			<aside class="col-lg-3 mt-3 mt-lg-0 d-flex flex-column gap-3">
 				<?= $this->hub->theme->partial('sidebar') ?>
 			</aside>
 		</div><!--/.row-->
