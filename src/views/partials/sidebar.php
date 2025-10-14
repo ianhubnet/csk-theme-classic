@@ -7,7 +7,7 @@
 ]) ?>
 <div class="card shadow-sm">
 	<div class="card-header bg-body-secondary">
-		<h2 class="card-title h4 mb-0"><?= line('theme_sidebar_heading', 'classic') ?></h2>
+		<h2 class="card-title h6 mb-0"><?= line('theme_sidebar_heading', 'classic') ?></h2>
 	</div>
 	<div class="card-body">
 		<p class="mb-0"><?= line('theme_sidebar_content', 'classic') ?></p>

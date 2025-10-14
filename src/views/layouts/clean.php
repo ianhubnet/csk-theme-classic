@@ -1,6 +1,8 @@
 <?= $this->hub->theme->partial('header') ?>
-<div class="container">
+
+<main class="container" role="main">
 	<?= $this->hub->ui->alerts() ?>
 	<?= $this->hub->theme->content() ?>
-</div>
+</main>
+
 <?= $this->hub->theme->partial('footer') ?>

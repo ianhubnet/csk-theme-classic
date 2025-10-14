@@ -134,7 +134,7 @@
 	 * Change CAPTCHA image height, background color, border color,
 	 * text color, grid color, and image class.
 	 */
-	once_filter('captcha_img_height', fn($height) => 38);
+	once_filter('captcha_img_height', fn($height) => 41);
 	once_filter('captcha_background_color', fn($rgb) => [255, 255, 255]);
 	once_filter('captcha_border_color', fn($rgb) => [206, 212, 218]);
 	once_filter('captcha_text_color', fn($rgb) => [33, 37, 41]);

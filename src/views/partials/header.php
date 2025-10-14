@@ -14,7 +14,7 @@
 			]) ?>
 			<ul class="navbar-nav ms-auto">
 			<?php if ($this->hub->auth->previous_id > 0): ?>
-				<form class="navbar-form navbar-start pl-0 pr-0" action="<?= site_url('switch') ?>" method="POST">
+				<form class="navbar-form navbar-start pl-0 pr-0" action="<?= nonce_url('switch-account', 'switch-'.$this->hub->auth->previous_id) ?>" method="POST">
 					<input type="hidden" name="id" value="<?= $this->hub->auth->previous_id ?>" hidden="hidden" style="display:none">
 					<button type="submit" class="btn btn-link"><span class="fa fa-sign-in"></span></button>
 				</form>

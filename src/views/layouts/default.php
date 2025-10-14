@@ -1,5 +1,6 @@
 <?= $this->hub->theme->partial('header') ?>
-<main role="main" class="wrapper pt-3 pb-5">
+
+<main class="wrapper pt-3 pb-5" role="main">
 	<div class="container">
 		<?php
 		// Display the alert.
@@ -16,4 +17,5 @@
 		?>
 	</div><!--/.container-->
 </main><!--/#wrapper-->
+
 <?= $this->hub->theme->partial('footer') ?>
