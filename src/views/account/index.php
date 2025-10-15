@@ -57,5 +57,6 @@
 
 	<div class="col-12 col-md-3 order-md-1 mt-3 mt-md-0">
 		<?= $this->hub->theme->widget('navbar') ?>
+		<?= $this->hub->theme->widget('contact') ?>
 	</div><!--/.col-->
 </div>

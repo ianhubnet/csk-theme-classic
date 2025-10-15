@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Default theme functions.php file.
+ * Default theme bootstrap file.
  *
- * This file is an example of how to use functions.php for your themes.
+ * This file is an example of how to use `boot.php` for your themes.
  * You can use a class or simply a list of functions to add your hooks.
  *
  * @package     CiSkeleton\Themes
- * @subpackage  Default\Functions
+ * @subpackage  Default\Bootstrap
  * @author      Kader Bouyakoub <bkader[at]mail[dot]com>
  * @link        http://bit.ly/KaderGhb
  * @copyright   Copyright (c) 2024, Kader Bouyakoub (http://bit.ly/KaderGhb)
