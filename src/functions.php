@@ -134,12 +134,13 @@
 	 * Change CAPTCHA image height, background color, border color,
 	 * text color, grid color, and image class.
 	 */
+	once_filter('captcha_font_size', fn($size) => 22);
 	once_filter('captcha_img_height', fn($height) => 41);
 	once_filter('captcha_background_color', fn($rgb) => [255, 255, 255]);
-	once_filter('captcha_border_color', fn($rgb) => [206, 212, 218]);
+	once_filter('captcha_border_color', fn($rgb) => [206, 212, 218, 127]);
 	once_filter('captcha_text_color', fn($rgb) => [33, 37, 41]);
-	once_filter('captcha_grid_color', fn($rgb) => [173, 181, 189]);
-	once_filter('captcha_img_class', fn($class) => 'img-fluid rounded-1');
+	once_filter('captcha_grid_color', fn($rgb) => [173, 181, 189, 50]);
+	once_filter('captcha_img_class', fn($class) => 'img-fluid rounded-2');
 
 	/**
 	 * Filters to set reCAPTCHA theme and size.
