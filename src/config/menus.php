@@ -24,6 +24,19 @@ $config['primary'] = [
 		'title' => 'lang:contact_us',
 		'href'  => 'contact',
 		'show_if' => ['module' => 'contact'],
+	],
+
+	[
+		'title' => 'lang:about',
+		'href'  => 'page/about',
+		'show_if' => [
+			'module' => 'pages',
+			'entity' => [
+				'type' => 'object',
+				'subtype' => 'page',
+				'username' => 'about'
+			]
+		],
 	]
 ];
 
