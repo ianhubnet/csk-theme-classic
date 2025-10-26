@@ -1,65 +1,31 @@
 <?php
 
 /**
- * Menu configuration
+ * Theme Menu Locations
  *
- * Each menu is an array of items.
- * Items support localization, conditions, children, and attributes.
+ * Declares the menu locations supported by the theme. Each location maps to
+ * a translated label displayed to administrators when assigning menus.
+ *
+ * Structure:
+ *   '<location_id>' => 'lang:<language_key>'
+ *
+ * Example:
+ *   'primary' => 'lang:loc_main'
+ *
+ * Notes:
+ * - Keys must be unique per theme.
+ * - Labels should use language references to ensure localization.
+ * - Assigned menus are stored in application settings, not here.
+ * - Themes may add or remove locations as needed.
+ *
+ * @package     Themes\Config
+ * @subpackage  Menus
+ * @author      Kader Bouyakoub <bkader[at]mail[dot]com>
+ * @copyright   Copyright (c) 2025, Kader Bouyakoub
  */
 
-// Primary menu.
-$config['primary'] = [
-	[
-		'title' => 'lang:home',
-		'href'  => '/',
-	],
-
-	[
-		'title' => 'lang:blog',
-		'href'  => 'blog',
-		'show_if' => ['module' => 'blog'],
-	],
-
-	[
-		'title' => 'lang:contact_us',
-		'href'  => 'contact',
-		'show_if' => ['module' => 'contact'],
-	],
-
-	[
-		'title' => 'lang:about',
-		'href'  => 'page/about',
-		'show_if' => [
-			'module' => 'pages',
-			'entity' => [
-				'type' => 'object',
-				'subtype' => 'page',
-				'username' => 'about'
-			]
-		],
-	]
-];
-
-// Footer menu.
-$config['footer'] = [
-	// Ianhub website.
-	[
-		'title' => '<i class="fa fa-fw fa-globe"></i>',
-		'href' => Platform::SITE_URL,
-		'attrs' => ['rel' => 'external', 'target' => '_blank']
-	],
-
-	// Ianhub GitHub
-	[
-		'title' => '<i class="fab fa-fw fa-github"></i>',
-		'href' => 'https://github.com/ianhubnet/',
-		'attrs' => ['rel' => 'external', 'target' => '_blank']
-	],
-
-	// Ianhub LinkedIn
-	[
-		'title' => '<i class="fab fa-fw fa-linkedin"></i>',
-		'href' => 'https://www.linkedin.com/company/ianhub/',
-		'attrs' => ['rel' => 'external', 'target' => '_blank']
-	]
+return [
+	'primary' => 'lang:menu_loc_main',
+	'footer' => 'lang:menu_loc_footer',
+	'sidebar' => 'lang:menu_loc_sidebar',
 ];

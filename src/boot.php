@@ -37,7 +37,7 @@ once_action('theme_setup', function ($ci) {
 	$ci->hub->assets->fontawesome()->bootstrap();
 
 	// Assets we queue in production mode.
-	$style_css = 'assets/css/style'./*(CI_DEBUG ? '' : '.min').*/'.css';
+	$style_css = 'assets/css/style'.(CI_DEBUG ? '' : '.min').'.css';
 	$ci->hub->assets->css($ci->url->theme($style_css), 'style', null, true);
 });
 
