@@ -5,7 +5,7 @@ return [
 	'name' => 'Classic',
 	'theme_uri' => 'https://github.com/ianhubnet/csk-theme-default/',
 	'description' => 'A multipurpose CiSkeleton theme built with Bootstrap 5.',
-	'version' => '0.6.1b',
+	'version' => '0.6.2b',
 	'author' => Platform::AUTHOR,
 	'author_uri' => Platform::AUTHOR_URL,
 	'author_email' => Platform::AUTHOR_EMAIL,
