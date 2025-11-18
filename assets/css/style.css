@@ -158,70 +158,6 @@ textarea {
 	color: var(--bs-white);
 }
 
-/* === MEDIA QUERIES === */
-
-/* sm and up (567px) */
-@media (max-width: 36rem) {
-	.dropdown-menu-scroll {
-		max-block-size: calc(100vh - 8rem);
-	}
-}
-
-@media (min-width: 36rem) {
-}
-
-/* md and up (≥768px) */
-@media (max-width: 48rem) {
-	.dropdown-menu-scroll {
-		max-block-size: calc(100vh - 32rem);
-	}
-}
-
-@media (min-width: 48rem) {
-	.cookie-consent {
-		max-inline-size: 25rem;
-		border-radius: .25rem;
-		inset-inline-end: 1rem;
-		inset-block-end: 4rem;
-	}
-
-	.footer {
-		padding-block: 1rem;
-		border-block-start: 1px solid var(--bs-gray-300);
-	}
-
-	.footer .nav {
-		justify-content: flex-end;
-	}
-}
-
-/* lg and up (≥992px) */
-@media (max-width: 62rem) {
-	.dropdown-menu-scroll {
-		max-block-size: calc(100vh - 32rem);
-	}
-}
-
-@media (min-width: 62rem) {
-	.user-menu {
-		border-inline-start: 1px solid rgba(var(--bs-white-rgb), .2);
-	}
-
-	.wrapper-focus aside {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-}
-
-/* xl and up (≥1200px) */
-@media (min-width: 75rem) {
-}
-
-/* xxl and up (≥1400px) */
-@media (min-width: 87rem) {
-}
-
 /* === PAGE 404 === */
 
 .csk-error_404 .wrapper {
@@ -308,5 +244,84 @@ textarea {
 	color: var(--bs-gray-600);
 }
 
+/* === WIDGETS === */
+
+.widget-hero {
+	padding-inline: 0 !important;
+}
+
+.widget-hero .widget-title {
+	font-size: calc(1.425rem + 2.1vw) !important;
+	color: var(--bs-primary);
+}
 
 /* === UTILITIES === */
+
+
+
+/* === MEDIA QUERIES === */
+
+/* sm and up (567px) */
+@media (max-width: 36rem) {
+	.dropdown-menu-scroll {
+		max-block-size: calc(100vh - 8rem);
+	}
+}
+
+@media (min-width: 36rem) {
+}
+
+/* md and up (≥768px) */
+@media (max-width: 48rem) {
+	.dropdown-menu-scroll {
+		max-block-size: calc(100vh - 32rem);
+	}
+}
+
+@media (min-width: 48rem) {
+	.cookie-consent {
+		max-inline-size: 25rem;
+		border-radius: .25rem;
+		inset-inline-end: 1rem;
+		inset-block-end: 4rem;
+	}
+
+	.footer {
+		padding-block: 1rem;
+		border-block-start: 1px solid var(--bs-gray-300);
+	}
+
+	.footer .nav {
+		justify-content: flex-end;
+	}
+}
+
+/* lg and up (≥992px) */
+@media (max-width: 62rem) {
+	.dropdown-menu-scroll {
+		max-block-size: calc(100vh - 32rem);
+	}
+}
+
+@media (min-width: 62rem) {
+	.user-menu {
+		border-inline-start: 1px solid rgba(var(--bs-white-rgb), .2);
+	}
+
+	.wrapper-focus aside {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+}
+
+/* xl and up (≥1200px) */
+@media (min-width: 75rem) {
+	.widget-hero .widget-title {
+		font-size: 3rem !important;
+	}
+}
+
+/* xxl and up (≥1400px) */
+@media (min-width: 87rem) {
+}

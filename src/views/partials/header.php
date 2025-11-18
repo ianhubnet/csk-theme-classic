@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
 	<div class="container">
-		<?= anchor('', $site_name, 'class="navbar-brand"') ?>
+		<?= anchor('', $site_name, 'class="navbar-brand notranslate"') ?>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-offcanvas" aria-controls="navbar-offcanvas" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
 					</li>
 				<?php endif; ?>
 	<?php if ($this->user): ?>
-				<?php if ($this->user->dashboard): ?>
+				<?php if ($this->user->has_dashboard): ?>
 					<li class="nav-item"><?= anchor('admin', line('admin_panel'), 'class="nav-link"') ?></li>
 				<?php endif; ?>
 					<li class="nav-item dropdown user-menu">
@@ -40,10 +40,7 @@
 							<?php
 							// The following is hidden is maintenance mode.
 							if ($this->user->has_offline()) {
-								echo anchor('user/'.$this->user->username, line('view_profile'), 'class="dropdown-item"');
-								if ($this->module->enabled('account')) {
-									echo anchor('account', line('settings'), 'class="dropdown-item"');
-								}
+								echo anchor('account', line('settings'), 'class="dropdown-item"');
 								echo '<hr class="dropdown-divider">';
 							}
 

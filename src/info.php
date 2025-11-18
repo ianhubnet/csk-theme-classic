@@ -43,6 +43,12 @@ return [
 			'description' => 'Víceúčelové téma CiSkeleton vytvořené pomocí Bootstrapu 5.',
 		],
 
+		// Dutch
+		'dutch' => [
+			'name' => 'Classic',
+			'description' => 'Een multifunctioneel CiSkeleton-thema gebouwd met Bootstrap 5.',
+		],
+
 		// French
 		'french' => [
 			'name' => 'Classique',
@@ -119,6 +125,12 @@ return [
 		'taiwanese' => [
 			'name' => '經典',
 			'description' => '使用 Bootstrap 5 建構的多功能 CiSkeleton 主題。',
+		],
+
+		// Thai
+		'thai' => [
+			'name' => 'คลาสสิก',
+			'description' => 'ธีม CiSkeleton แบบอเนกประสงค์ที่สร้างขึ้นด้วย Bootstrap 5.',
 		],
 
 		// Turkish
