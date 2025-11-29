@@ -41,13 +41,18 @@ jobs:
       # 3. Prepare ZIP contents
       - name: 3️⃣ Prepare ZIP contents
         run: |
-          mkdir "${{ steps.vars.outputs.name }}"
-          if [ -d "src" ]; then
-            cp -r src "${{ steps.vars.outputs.name }}/"
+          if [ ! -d "src" ]; then
+            echo "::error::src not found"
+            exit 1
           fi
+
+          mkdir "${{ steps.vars.outputs.name }}"
+          cp -r src "${{ steps.vars.outputs.name }}/"
+
           if [ -d "assets" ]; then
             cp -r assets "${{ steps.vars.outputs.name }}/"
           fi
+
           for f in README.md LICENSE.md; do
             if [ -f "$f" ]; then
               cp "$f" "${{ steps.vars.outputs.name }}/"
