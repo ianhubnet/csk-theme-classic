@@ -5,7 +5,7 @@ return [
 	'name' => 'Classic',
 	'theme_uri' => 'https://github.com/ianhubnet/csk-theme-default/',
 	'description' => 'A multipurpose CiSkeleton theme built with Bootstrap 5.',
-	'version' => '0.6.3',
+	'version' => '0.6.4',
 	'author' => Platform::AUTHOR,
 	'author_uri' => Platform::AUTHOR_URL,
 	'author_email' => Platform::AUTHOR_EMAIL,
@@ -61,10 +61,22 @@ return [
 			'description' => 'Ein vielseitiges CiSkeleton-Theme, erstellt mit Bootstrap 5.',
 		],
 
+		// Greek
+		'greek' => [
+			'name' => 'Κλασικό',
+			'description' => 'Ένα πολυχρηστικό θέμα CiSkeleton που δημιουργήθηκε με Bootstrap 5.',
+		],
+
 		// Hindi
 		'hindi' => [
 			'name' => 'क्लासिक',
 			'description' => 'बूटस्ट्रैप 5 के साथ निर्मित एक बहुउद्देशीय CiSkeleton थीम।',
+		],
+
+		// Hungarian
+		'hungarian' => [
+			'name' => 'Klasszikus',
+			'description' => 'Egy többfunkciós CiSkeleton téma, amelyet Bootstrap 5 segítségével készítettek.',
 		],
 
 		// Indonesian
@@ -107,6 +119,24 @@ return [
 		'portuguese' => [
 			'name' => 'Clássico',
 			'description' => 'Um tema CiSkeleton multifuncional desenvolvido com Bootstrap 5.',
+		],
+
+		// Romanian
+		'romanian' => [
+			'name' => 'Clasic',
+			'description' => 'O temă CiSkeleton multifuncțională construită cu Bootstrap 5.',
+		],
+
+		// Russian
+		'russian' => [
+			'name' => 'Классическая',
+			'description' => 'Многоцелевая тема CiSkeleton, созданная на Bootstrap 5.',
+		],
+
+		// Serbian (Latin)
+		'serbian' => [
+			'name' => 'Klasičan',
+			'description' => 'Višenamenska CiSkeleton tema izrađena sa Bootstrap 5.',
 		],
 
 		// Russian
