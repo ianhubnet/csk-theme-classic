@@ -35,7 +35,7 @@
 					<li class="nav-item"><?= anchor('admin', line('admin_panel'), 'class="nav-link"') ?></li>
 				<?php endif; ?>
 					<li class="nav-item dropdown user-menu">
-						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->user->avatar(24, 'class="rounded-circle"').$this->user->first_name ?></a>
+						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->user->avatar(24, ['class' => 'rounded']).$this->user->first_name ?></a>
 						<div class="dropdown-menu dropdown-menu-end">
 							<?php
 							// The following is hidden is maintenance mode.
