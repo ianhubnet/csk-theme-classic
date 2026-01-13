@@ -32,7 +32,7 @@
 						</div>
 					</li>
 				<?php endif; ?>
-	<?php if ($this->user): ?>
+				<?php if ($this->user): ?>
 				<?php if ($this->user->has_dashboard): ?>
 					<li class="nav-item"><?= anchor('admin', line('admin_panel'), 'class="nav-link"') ?></li>
 				<?php endif; ?>
@@ -52,7 +52,7 @@
 						</div>
 					</li>
 				</ul>
-	<?php else: ?>
+				<?php else: ?>
 				</ul>
 				<div class="btn-group btn-group-sm d-flex d-md-block mt-3 mt-md-1 ms-md-2">
 					<?= anchor('login', line('login'), 'class="btn btn-primary"') ?>
@@ -63,8 +63,8 @@
 					}
 					?>
 				</div>
+				<?php endif; ?>
 			</div><!--/.offcanvas-body-->
-<?php endif; ?>
 		</div>
 	</div>
 </nav>
