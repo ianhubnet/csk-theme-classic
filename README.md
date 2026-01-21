@@ -1,6 +1,6 @@
 # CSK Theme — Classic
 
-The **default frontend theme** for [CodeIgniter Skeleton (CSK)](https://github.com/ianhubnet).
+The **default frontend theme** for [CiSkeleton (CSK)](https://github.com/ianhubnet).
 
 **Classic** is a clean, minimal example of how CSK themes work.  
 It’s intentionally simple — making it the perfect starting point for building your own custom themes.
