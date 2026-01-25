@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   release:
-    uses: ianhubnet/csk-release/.github/workflows/package.yml@main
+    uses: ianhubnet/.github/.github/workflows/package.yml@main
     with:
       name: ${{ vars.CSK_NAME }}
       type: ${{ vars.CSK_TYPE }}
