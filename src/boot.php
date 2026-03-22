@@ -103,25 +103,31 @@ once_action('enqueue_partials', function ($ci) {
  * @return array
  */
 once_filter('pagination', function ($config) {
-	$config['full_tag_open'] = '<div class="text-center"><ul class="pagination pagination-sm pagination-centered mb-0">';
-	$config['full_tag_close'] = '</ul></div>';
-	$config['num_links'] = 5;
+	$config['full_tag_open'] = '<ul class="pagination pagination-sm pagination-centered d-flex align-items-start justify-content-center m-0">';
+	$config['full_tag_close'] = '</ul>';
+	$config['num_links'] = 2;
 	$config['num_tag_open'] = '<li class="page-item">';
 	$config['num_tag_close'] = '</li>';
 	$config['prev_tag_open'] = '<li class="page-item">';
 	$config['prev_tag_close'] = '</li>';
-	$config['prev_link'] = '<i class="fa fa-fw fa-backward"></i>';
+	$config['prev_link'] = '<i class="fas fa-fw fa-angle-left"></i>';
 	$config['next_tag_open'] = '<li class="page-item">';
 	$config['next_tag_close'] = '</li>';
-	$config['next_link'] = '<i class="fa fa-fw fa-forward"></i>';
+	$config['next_link'] = '<i class="fas fa-fw fa-angle-right"></i>';
 	$config['first_tag_open'] = '<li class="page-item">';
 	$config['first_tag_close'] = '</li>';
-	$config['first_link'] = '<i class="fa fa-fw fa-fast-backward"></i>';
+	$config['first_link'] = '<i class="fas fa-fw fa-angles-left"></i>';
 	$config['last_tag_open'] = '<li class="page-item">';
 	$config['last_tag_close'] = '</li>';
-	$config['last_link'] = '<i class="fa fa-fw fa-fast-forward"></i>';
+	$config['last_link'] = '<i class="fas fa-fw fa-angles-right"></i>';
 	$config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
-	$config['cur_tag_close'] = '<span class="sr-only">(current)</span></span></li>';
+	$config['cur_tag_close'] = '<span class="visually-hidden">(current)</span></span></li>';
+	$config['page_query_key'] = 'page';
+	$config['display_pages'] = true;
+	$config['attributes'] = ['class' => 'page-link'];
+	$config['summary_tag_open'] = '<caption class="text-center small text-muted">';
+	$config['summary_tag_close'] = '</caption>';
+	$config['summary_text'] = 'pagination_summary_text';
 
 	return $config;
 });
