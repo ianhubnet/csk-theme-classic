@@ -3,7 +3,7 @@
 return [
 	// Info
 	'name' => 'Classic',
-	'theme_uri' => 'https://github.com/ianhubnet/csk-theme-default/',
+	'theme_uri' => 'https://github.com/ianhubnet/csk-theme-classic/',
 	'description' => 'A multipurpose {platform_name} theme built with Bootstrap 5.',
 	'version' => '0.6.4',
 	'author' => Platform::AUTHOR,
@@ -16,7 +16,13 @@ return [
 		// Arabic
 		'arabic' => [
 			'name' => 'كلاسيك',
-			'description' => 'قالب سي سكلتون متعدد الأغراض مُصمم باستخدام بوتسترب 5.',
+			'description' => 'قالب {platform_name} متعدد الأغراض مبني باستخدام Bootstrap 5.',
+		],
+
+		// Bengali
+		'bengali' => [
+			'name' => 'ক্লাসিক',
+			'description' => 'Bootstrap 5 দিয়ে তৈরি একটি বহুমুখী {platform_name} থিম।',
 		],
 
 		// Brazilian Portuguese
@@ -28,13 +34,25 @@ return [
 		// Bulgarian
 		'bulgarian' => [
 			'name' => 'Класически',
-			'description' => 'Многофункционална {platform_name} тема, изградена с Bootstrap 5.',
+			'description' => 'Многофункционална тема {platform_name}, изградена с Bootstrap 5.',
+		],
+
+		// Catalan
+		'catalan' => [
+			'name' => 'Clàssic',
+			'description' => 'Un tema {platform_name} polivalent construït amb Bootstrap 5.',
 		],
 
 		// Simplified Chinese
 		'chinese' => [
 			'name' => '经典',
-			'description' => '使用 Bootstrap 5 构建的多功能 {platform_name} 主题。',
+			'description' => '使用 Bootstrap 5 构建的多用途 {platform_name} 主题。',
+		],
+
+		// Croatian
+		'croatian' => [
+			'name' => 'Klasični',
+			'description' => 'Višenamjenska {platform_name} tema izrađena uz Bootstrap 5.',
 		],
 
 		// Czech
@@ -43,10 +61,28 @@ return [
 			'description' => 'Víceúčelové téma {platform_name} vytvořené pomocí Bootstrapu 5.',
 		],
 
+		// Danish
+		'danish' => [
+			'name' => 'Klassisk',
+			'description' => 'Et alsidigt {platform_name}-tema bygget med Bootstrap 5.',
+		],
+
 		// Dutch
 		'dutch' => [
-			'name' => 'Classic',
+			'name' => 'Klassiek',
 			'description' => 'Een multifunctioneel {platform_name}-thema gebouwd met Bootstrap 5.',
+		],
+
+		// Filipino
+		'filipino' => [
+			'name' => 'Klasiko',
+			'description' => 'Isang multipurpose na {platform_name} theme na ginawa gamit ang Bootstrap 5.',
+		],
+
+		// Finnish
+		'finnish' => [
+			'name' => 'Klassinen',
+			'description' => 'Monikäyttöinen {platform_name}-teema, joka on rakennettu Bootstrap 5:llä.',
 		],
 
 		// French
@@ -70,13 +106,13 @@ return [
 		// Hindi
 		'hindi' => [
 			'name' => 'क्लासिक',
-			'description' => 'बूटस्ट्रैप 5 के साथ निर्मित एक बहुउद्देशीय {platform_name} थीम।',
+			'description' => 'Bootstrap 5 के साथ निर्मित एक बहुउद्देशीय {platform_name} थीम।',
 		],
 
 		// Hungarian
 		'hungarian' => [
 			'name' => 'Klasszikus',
-			'description' => 'Egy többfunkciós {platform_name} téma, amelyet Bootstrap 5 segítségével készítettek.',
+			'description' => 'Egy többfunkciós {platform_name} téma, amely Bootstrap 5-re épül.',
 		],
 
 		// Indonesian
@@ -94,7 +130,7 @@ return [
 		// Japanese
 		'japanese' => [
 			'name' => 'クラシック',
-			'description' => 'Bootstrap 5で構築された多目的Ciskeletonテーマ。',
+			'description' => 'Bootstrap 5で構築された多目的な{platform_name}テーマ。',
 		],
 
 		// Korean
@@ -103,16 +139,34 @@ return [
 			'description' => 'Bootstrap 5로 제작된 다목적 {platform_name} 테마입니다.',
 		],
 
+		// Latvian
+		'latvian' => [
+			'name' => 'Klasisks',
+			'description' => 'Daudzfunkcionāla {platform_name} tēma, kas veidota ar Bootstrap 5.',
+		],
+
+		// Lithuanian
+		'lithuanian' => [
+			'name' => 'Klasikinė',
+			'description' => 'Universalios paskirties {platform_name} tema, sukurta naudojant Bootstrap 5.',
+		],
+
 		// Malay
 		'malay' => [
 			'name' => 'Klasik',
 			'description' => 'Tema {platform_name} serbaguna yang dibina dengan Bootstrap 5.',
 		],
 
+		// Norwegian
+		'norwegian' => [
+			'name' => 'Klassisk',
+			'description' => 'Et flerbruks {platform_name}-tema bygget med Bootstrap 5.',
+		],
+
 		// Persian
 		'persian' => [
 			'name' => 'کلاسیک',
-			'description' => 'یک قالب چندمنظوره {platform_name} که با بوت‌استرپ ۵ ساخته شده است.',
+			'description' => 'یک قالب چندمنظوره {platform_name} که با Bootstrap 5 ساخته شده است.',
 		],
 
 		// Polish
@@ -121,7 +175,7 @@ return [
 			'description' => 'Wielofunkcyjny motyw {platform_name} zbudowany w oparciu o Bootstrap 5.',
 		],
 
-		// Portuguese
+		// European Portuguese
 		'portuguese' => [
 			'name' => 'Clássico',
 			'description' => 'Um tema {platform_name} multifuncional desenvolvido com Bootstrap 5.',
@@ -145,6 +199,18 @@ return [
 			'description' => 'Višenamenska {platform_name} tema izrađena sa Bootstrap 5.',
 		],
 
+		// Slovak
+		'slovak' => [
+			'name' => 'Klasická',
+			'description' => 'Viacúčelová téma {platform_name} vytvorená pomocou Bootstrapu 5.',
+		],
+
+		// Slovenian
+		'slovenian' => [
+			'name' => 'Klasična',
+			'description' => 'Večnamenska tema {platform_name}, izdelana z Bootstrap 5.',
+		],
+
 		// Spanish
 		'spanish' => [
 			'name' => 'Clásico',
@@ -157,7 +223,7 @@ return [
 			'description' => 'Ett mångsidigt {platform_name}-tema byggt med Bootstrap 5.',
 		],
 
-		// Traditional Chinese (Taiwanese)
+		// Traditional Chinese
 		'taiwanese' => [
 			'name' => '經典',
 			'description' => '使用 Bootstrap 5 建構的多功能 {platform_name} 主題。',
@@ -179,6 +245,12 @@ return [
 		'turkish' => [
 			'name' => 'Klasik',
 			'description' => 'Bootstrap 5 ile oluşturulmuş çok amaçlı bir {platform_name} teması.',
+		],
+
+		// Ukrainian
+		'ukrainian' => [
+			'name' => 'Класична',
+			'description' => 'Багатофункціональна тема {platform_name}, створена на Bootstrap 5.',
 		],
 
 		// Urdu
