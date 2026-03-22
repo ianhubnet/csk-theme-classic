@@ -103,6 +103,12 @@ return [
 			'description' => 'Bootstrap 5로 제작된 다목적 {platform_name} 테마입니다.',
 		],
 
+		// Malay
+		'malay' => [
+			'name' => 'Klasik',
+			'description' => 'Tema {platform_name} serbaguna yang dibina dengan Bootstrap 5.',
+		],
+
 		// Persian
 		'persian' => [
 			'name' => 'کلاسیک',
@@ -139,22 +145,28 @@ return [
 			'description' => 'Višenamenska {platform_name} tema izrađena sa Bootstrap 5.',
 		],
 
-		// Russian
-		'russian' => [
-			'name' => 'Классическая',
-			'description' => 'Многоцелевая тема {platform_name}, созданная на Bootstrap 5.',
-		],
-
 		// Spanish
 		'spanish' => [
 			'name' => 'Clásico',
 			'description' => 'Un tema multipropósito de {platform_name} desarrollado con Bootstrap 5.',
 		],
 
+		// Swedish
+		'swedish' => [
+			'name' => 'Klassisk',
+			'description' => 'Ett mångsidigt {platform_name}-tema byggt med Bootstrap 5.',
+		],
+
 		// Traditional Chinese (Taiwanese)
 		'taiwanese' => [
 			'name' => '經典',
 			'description' => '使用 Bootstrap 5 建構的多功能 {platform_name} 主題。',
+		],
+
+		// Tamil
+		'tamil' => [
+			'name' => 'கிளாசிக்',
+			'description' => 'Bootstrap 5 கொண்டு உருவாக்கப்பட்ட பல்நோக்கு {platform_name} தீம்.',
 		],
 
 		// Thai
@@ -167,6 +179,12 @@ return [
 		'turkish' => [
 			'name' => 'Klasik',
 			'description' => 'Bootstrap 5 ile oluşturulmuş çok amaçlı bir {platform_name} teması.',
+		],
+
+		// Urdu
+		'urdu' => [
+			'name' => 'کلاسک',
+			'description' => 'Bootstrap 5 کے ساتھ بنایا گیا ایک کثیر المقاصد {platform_name} تھیم۔',
 		],
 
 		// Vietnamese
