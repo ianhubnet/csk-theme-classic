@@ -8,7 +8,7 @@
 
 		<div class="offcanvas offcanvas-end bg-dark" id="navbar-offcanvas">
 			<div class="offcanvas-body">
-				<?= $this->hub->menus->render('primary', [
+				<?= $hub->menus->render('primary', [
 					'menu_attrs' => ['class' => 'navbar-nav justify-content-start flex-grow-1 px-md-3 pe-auto'],
 					'item_attrs' => ['class' => 'nav-item'],
 					'link_attrs' => ['class' => 'nav-link']
@@ -17,14 +17,14 @@
 				<?php if ($this->hub->auth->previous_id > 0): ?>
 					<li class="nav-item">
 						<form class="navbar-form navbar-start pl-0 pr-0" action="<?= nonce_url('switch-account', 'switch-'.$this->hub->auth->previous_id) ?>" method="POST">
-							<input type="hidden" name="id" value="<?= $this->hub->auth->previous_id ?>" hidden="hidden" style="display:none">
+							<input type="hidden" name="id" value="<?= $hub->auth->previous_id ?>" hidden="hidden" style="display:none">
 							<button type="submit" class="nav-link"><span class="fa fa-sign-in"></span></button>
 						</form>
 					</li>
 				<?php endif; ?>
 				<?php if (CI_POLYLANG): ?>
 					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->hub->lang->current('name_current') ?> <span class="caret"></span></a>
+						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $hub->lang->current('name_current') ?> <span class="caret"></span></a>
 						<div class="dropdown-menu dropdown-menu-end dropdown-menu-scroll">
 						<?php foreach ($this->hub->lang->others('current') as $folder => $lang): ?>
 							<a href="<?= lang_url($folder) ?>" class="dropdown-item"><?= $lang['name_current'] ?><span class="text-muted float-end ms-2"><?= $lang['name'] ?></span></a>
