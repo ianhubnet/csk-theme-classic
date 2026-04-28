@@ -9,8 +9,7 @@
  * @package     CiSkeleton\Themes
  * @subpackage  Classic\Bootstrap
  * @author      Kader Bouyakoub <bkader[at]mail[dot]com>
- * @link        http://bit.ly/KaderGhb
- * @copyright   Copyright (c) 2024, Kader Bouyakoub (http://bit.ly/KaderGhb)
+ * @copyright   Copyright (c) 2018-present, Kader Bouyakoub
  */
 
 // Nothing to do for the dashboard.
