@@ -82,8 +82,8 @@ once_filter('theme_layout', function ($layout, $ci) {
 once_action('enqueue_partials', function ($ci) {
 	// Default partials, queued no matter the section.
 	$ci->hub->theme
-		->add_partial('header')
-		->add_partial('footer');
+		->once_partial('header')
+		->once_partial('footer');
 
 	// Nothing to had for blog module.
 	if ($ci->router->module === 'blog') {
@@ -91,7 +91,7 @@ once_action('enqueue_partials', function ($ci) {
 	}
 
 	// Add default sidebar.
-	$ci->hub->theme->add_partial('sidebar');
+	$ci->hub->theme->once_partial('sidebar');
 });
 
 /**
