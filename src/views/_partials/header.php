@@ -2,7 +2,13 @@
 	<div class="container">
 		<?= anchor('', $site_name, 'class="navbar-brand notranslate"') ?>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-offcanvas" aria-controls="navbar-offcanvas" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler"
+			type="button"
+			data-bs-toggle="offcanvas"
+			data-bs-target="#navbar-offcanvas"
+			aria-controls="navbar-offcanvas"
+			aria-expanded="false"
+			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -24,7 +30,14 @@
 				<?php endif; ?>
 				<?php if (CI_POLYLANG): ?>
 					<li class="nav-item dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $hub->lang->current('name_current') ?> <span class="caret"></span></a>
+						<a href="#"
+							class="nav-link dropdown-toggle"
+							data-bs-toggle="dropdown"
+							role="button"
+							aria-expanded="false">
+							<?= $hub->lang->current('name_current') ?>
+							<span class="caret"></span>
+						</a>
 						<div class="dropdown-menu dropdown-menu-end dropdown-menu-scroll">
 						<?php foreach ($this->hub->lang->others('current') as $folder => $lang): ?>
 							<a href="<?= lang_url($folder) ?>" class="dropdown-item"><?= $lang['name_current'] ?><span class="text-muted float-end ms-2"><?= $lang['name'] ?></span></a>
@@ -37,7 +50,13 @@
 					<li class="nav-item"><?= anchor('admin', line('admin_panel'), 'class="nav-link"') ?></li>
 				<?php endif; ?>
 					<li class="nav-item dropdown user-menu">
-						<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><?= $this->user->avatar(24, ['class' => 'rounded']).$this->user->first_name ?></a>
+						<a href="#"
+							class="nav-link dropdown-toggle"
+							data-bs-toggle="dropdown"
+							role="button"
+							aria-expanded="false">
+							<?= $this->user->avatar(24, ['class' => 'rounded']).$this->user->first_name ?>
+						</a>
 						<div class="dropdown-menu dropdown-menu-end">
 							<?php
 							// The following is hidden is maintenance mode.
