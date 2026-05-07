@@ -1,0 +1,11 @@
+484371f96c6b57492061d15bb4e4a5e43eac5822 refs/tags/0.5b
+79dac0ff62b5c390ee1c7dcad52ed2010fb0acd6 refs/tags/0.6.1b
+3a0d07c7e6de95eca3f7337e46edecc739390ecd refs/tags/0.6.2b
+2ddef5298b89d99a2690b7e8250127b4df7ace9b refs/tags/0.6.3
+34721a3aaa13eaec156d6cbbff42e04d4e959188 refs/tags/0.6.4
+f94a2523f61d97d8ce32036e2c6d6dc56bcf26c4 refs/tags/0.6.5-beta
+42f412cbe9dcee70be10b7d09a459908b3a96e57 refs/tags/0.6.5-beta.2
+b57907f064fab504c1a8b19c225d14f08ddd2f11 refs/tags/0.6.5-beta.3
+70e111601dea4e7d8586049d082baed09a7cc052 refs/tags/0.6.5-beta.4
+920ff4ec9a091cf84a4ea2006cd1c0bf5ce43412 refs/tags/0.6.5-beta.5
+9a309c3577c0bbfb500d10aed172763e32d44aff refs/tags/0.6b
