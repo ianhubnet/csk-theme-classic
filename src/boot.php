@@ -36,7 +36,7 @@ once_action('theme_setup', static function ($ci) {
 	$ci->hub->assets->fontawesome()->bootstrap();
 
 	// Assets we queue in production mode.
-	$style_css = 'assets/css/style'.(CI_DEBUG ? '' : '.min').'.css';
+	$style_css = 'assets/css/style'.(CI_PUBLIC ? '.min' : '').'.css';
 	$ci->hub->assets->css($ci->url->theme($style_css), 'style', null, true);
 });
 
@@ -47,7 +47,7 @@ once_action('theme_setup', static function ($ci) {
  * @return string
  */
 once_filter('extra_head', static function ($content) {
-	add_ie9_support($output, !CI_DEBUG);
+	add_ie9_support($output, CI_PUBLIC);
 	return $content;
 });
 
