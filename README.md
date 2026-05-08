@@ -1,4 +1,4 @@
-# CSK Theme — Classic
+# CiSkeleton Theme — Classic (Default)
 
 The **default frontend theme** for [CiSkeleton (CSK)](https://github.com/ianhubnet).
 
